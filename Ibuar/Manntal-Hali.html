@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Íbúaskrá Hala | Torfbæir á Íslandi</title>
+  <style>
+    :root {
+      --bg: #f5f1e8;
+      --paper: #fffdf8;
+      --earth: #6f5a46;
+      --earth-dark: #4b3a2b;
+      --muted: #6c645b;
+      --line: #d9cfbf;
+      --shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(180deg, #efe7d8 0%, var(--bg) 100%);
+      color: #2f2a24;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,253,248,0.94);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .nav {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--earth-dark);
+    }
+
+    .menu {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: var(--earth-dark);
+      padding: 10px 16px;
+      border-radius: 999px;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+      background: var(--earth);
+      color: white;
+    }
+
+    .page {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 32px 20px 50px;
+    }
+
+    .hero {
+      background: rgba(255,255,255,0.65);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      color: var(--earth-dark);
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .hero p {
+      margin: 0;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .pdf-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .pdf-frame {
+      width: 100%;
+      height: 85vh;
+      border: 0;
+      display: block;
+      background: white;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      text-align: center;
+      padding: 22px;
+      color: var(--muted);
+      background: rgba(255,253,248,0.7);
+      margin-top: 30px;
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .pdf-frame {
+        height: 75vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <nav class="nav">
+      <a href="../index.html" class="brand">Torfbæir á Íslandi</a>
+      <div class="menu">
+        <a href="../RvkTomthus.html">Allir bæir</a>
+        <a href="../Tomthus/T-Hali.html" class="active">Til baka á Hala</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <h1>Íbúaskrá Hala</h1>
+      <p>
+        Hér má skoða manntal og íbúaskrá fyrir Hala.
+      </p>
+    </section>
+
+    <section class="pdf-card">
+      <iframe class="pdf-frame" src="Manntal-Hali.pdf" title="Íbúaskrá Hala"></iframe>
+    </section>
+  </main>
+
+  <footer>
+    Torfbæir á Íslandi — Björn Jónsson
+  </footer>
+
+</body>
+</html>

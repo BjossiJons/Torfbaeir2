@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kort | Torfbæir á Íslandi</title>
+
+  <style>
+    :root {
+      --bg: #f5f1e8;
+      --paper: #fffdf8;
+      --earth: #6f5a46;
+      --earth-dark: #4b3a2b;
+      --grass: #657b4b;
+      --text: #2f2a24;
+      --muted: #6c645b;
+      --line: #d9cfbf;
+      --shadow: 0 12px 30px rgba(0,0,0,0.08);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(180deg, #efe7d8 0%, var(--bg) 100%);
+      color: var(--text);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,253,248,0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .nav {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--earth-dark);
+      text-decoration: none;
+    }
+
+    .menu {
+      display: flex;
+      gap: 12px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: var(--earth-dark);
+      padding: 10px 16px;
+      border-radius: 999px;
+    }
+
+    .menu a.active,
+    .menu a:hover {
+      background: var(--earth);
+      color: white;
+    }
+
+    .page {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 34px 24px;
+    }
+
+    .hero {
+      background: rgba(255,255,255,0.62);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 30px 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 26px;
+    }
+    
+    .eyebrow {
+      color: var(--grass);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 24px;
+    }
+
+    .sidebar {
+      background: var(--paper);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .map-links a {
+      display: block;
+      margin-bottom: 8px;
+      padding: 10px;
+      background: #faf6ee;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--earth-dark);
+    }
+
+    .map-links a.primary-map {
+      background: var(--earth);
+      color: white;
+      font-weight: 700;
+    }
+
+    .map-links a.active-map {
+      outline: 2px solid var(--earth-dark);
+      background: #e9decd;
+      font-weight: 700;
+    }
+
+    .map-links a.primary-map.active-map {
+      background: var(--earth-dark);
+      color: white;
+    }
+    
+    .map-section-title {
+      margin-top: 30px;
+      margin-bottom: 16px;
+      padding-left: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--grass);
+    }
+    
+    .map-links .secondary-map {
+      margin-left: 18px;
+    }
+
+    .viewer-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .viewer-header {
+      padding: 14px;
+      background: #faf6ee;
+      border-bottom: 1px solid var(--line);
+    }
+
+    iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.08;
+      color: var(--earth-dark);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <nav class="nav">
+    <a href="index.html" class="brand">Torfbæir á Íslandi</a>
+    <div class="menu">
+      <a href="RvkTomthus.html" >Reykjavík</a>
+      <a href="RvkBujardir.html" >Höfuðborgarsvæðið</a>
+      <a href="LandidBujardir.html" >Landsbyggðin</a>
+      <a href="Borgarkort.html" class="active">Kort</a>
+       <a href="um-vefinn.html" >Um vefinn</a>
+    </div>
+  </nav>
+</header>
+
+<main class="page">
+
+<section class="hero">
+  <div class="eyebrow">Kort og staðsetningar</div>
+  <h1>Kort yfir torfbæi og tengdar heimildir</h1>
+
+  <p>
+    Hér má skoða kort sem sýna staðsetningu torfbæja í Reykjavík og nágrenni.
+    Kortið sýnir bæði tómthúsbýli og bújarðir á höfuðborgarsvæðinu.
+  </p>
+
+  <p>
+    Með því að smella á merkingar á kortinu má lesa um einstaka bæi,
+    sjá staðsetningu þeirra og fá betri mynd af byggðarsögu svæðisins.
+  </p>
+
+  <p>
+    Til viðbótar eru hér tenglar á önnur gagnleg kort, svo sem kort yfir
+    menningarminjar, sögulega staði og nútímakort sem gefa frekara samhengi.
+  </p>
+</section>
+
+<section class="layout">
+
+<aside class="sidebar">
+<div class="map-links">
+
+  <!-- Aðalkort -->
+  <a
+    class="primary-map active-map"
+    href="https://www.google.com/maps/d/embed?mid=zja23gDP2mnA.kD20Bz2k7Sd4"
+    target="KortGluggi"
+    onclick="setActiveMap(this, 'Torfbæir í Reykjavík')">
+    Torfbæir í Reykjavík
+  </a>
+
+  <!-- 👇 Ný millifyrirsögn -->
+  <div class="map-section-title">Önnur áhugaverð kort</div>
+
+  <a
+    class="secondary-map"
+    href="https://minjastofnun.gis.is/mapview/?application=minjastofnun"
+    target="KortGluggi"
+    onclick="setActiveMap(this, 'Minjavefsjá')">
+    Minjavefsjá
+  </a>
+
+  <a
+    class="secondary-map"
+    href="https://sagamap.hi.is/"
+    target="KortGluggi"
+    onclick="setActiveMap(this, 'Sögu- og menningarkort')">
+    Sögu- og menningarkort
+  </a>
+
+  <a
+    class="secondary-map"
+    href="http://borgarvefsja.reykjavik.is/borgarvefsja/"
+    target="KortGluggi"
+    onclick="setActiveMap(this, 'Borgarvefsjá')">
+    Borgarvefsjá
+  </a>
+
+  <a
+    class="secondary-map"
+    href="https://www.map.is/base/"
+    target="KortGluggi"
+    onclick="setActiveMap(this, 'Íslandskort')">
+    Íslandskort
+  </a>
+
+  <a
+    class="secondary-map"
+    href="https://sketchfab.com/models/a34f6e7f0b704aecbac6c29dfe97ac9a/embed"
+    target="KortGluggi"
+    onclick="setActiveMap(this, 'Sölvhóll í 3D')">
+    Sölvhóll í 3D
+  </a>
+
+</div>
+</aside>
+
+<section class="viewer-card">
+<div class="viewer-header" id="viewerHeader">
+Torfbæir í Reykjavík
+</div>
+
+<iframe
+name="KortGluggi"
+src="https://www.google.com/maps/d/embed?mid=zja23gDP2mnA.kD20Bz2k7Sd4"
+title="Kort yfir torfbæi í Reykjavík">
+</iframe>
+
+</section>
+
+</section>
+
+</main>
+
+<footer>
+Torfbæir í Reykjavík — Björn Jónsson
+</footer>
+
+<!-- ✅ lagað: script neðst -->
+<script>
+function setActiveMap(linkElement, title) {
+  const allLinks = document.querySelectorAll('.map-links a');
+  const header = document.getElementById('viewerHeader');
+
+  allLinks.forEach(link => link.classList.remove('active-map'));
+  linkElement.classList.add('active-map');
+
+  if (header) {
+    header.textContent = title;
+  }
+}
+</script>
+
+</body>
+</html>

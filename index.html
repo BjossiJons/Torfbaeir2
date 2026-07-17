@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gamlir torfbæir á Íslandi</title>
+  <style>
+    :root {
+      --bg: #f5f1e8;
+      --paper: #fffdf8;
+      --earth: #6f5a46;
+      --earth-dark: #4b3a2b;
+      --grass: #657b4b;
+      --text: #2f2a24;
+      --muted: #6c645b;
+      --line: #d9cfbf;
+      --shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(180deg, #efe7d8 0%, var(--bg) 100%);
+      color: var(--text);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 253, 248, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: var(--earth-dark);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .menu {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: var(--earth-dark);
+      padding: 10px 16px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+      font-size: 0.98rem;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+      background: var(--earth);
+      color: white;
+    }
+
+   .hero {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 56px 24px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-text {
+      background: rgba(255,255,255,0.55);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      color: var(--grass);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      line-height: 1.05;
+      color: var(--earth-dark);
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--earth);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--earth-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--earth-dark);
+    }
+
+    .btn-secondary:hover {
+      background: #f1ebdf;
+    }
+
+    .hero-image {
+      background: var(--paper);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    
+    .hero-image-caption {
+      padding: 18px 22px 22px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.98rem;
+      background: var(--paper);
+    }
+
+    .intro {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 24px 70px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+      color: var(--earth-dark);
+    }
+
+    .card p {
+      margin: 0;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      text-align: center;
+      padding: 22px;
+      color: var(--muted);
+      background: rgba(255,253,248,0.7);
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a href="index.html" class="brand">Torfbæir á Íslandi</a>
+      <div class="menu">
+        <a href="RvkTomthus.html" >Reykjavík</a>
+        <a href="RvkBujardir.html" >Höfuðborgarsvæðið</a>
+        <a href="LandidBujardir.html" >Landsbyggðin</a>
+        <a href="Borgarkort.html">Kort</a>
+        <a href="um-vefinn.html">Um vefinn</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <div class="eyebrow">Sögulegur fróðleikur og ljósmyndir</div>
+        <h1>Gamlir torfbæir á Íslandi</h1>
+        <p>
+          Hér er safnað saman myndum og fróðleik um torfbæi víða um land.
+          Sérstaklega er þó fjallað um torfbæi sem voru í Reykjavík. Þessa bæi er alla búið að rífa
+          fyrir löngu með fáum undantekningum.
+        </p>
+        <p>
+          Markmið vefsins er að miðla efni til þeirra sem hafa áhuga á þessum mikilvæga hluta af
+          byggingarsögu landsins, menningu og minjum.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="RvkTomthus.html">Skoða bæi</a>
+          <a class="btn btn-secondary" href="Borgarkort.html">Opna kort</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+      <img src="Myndir/Img-Forsida2.jpg" alt="Litla Brekka, síðasti torfbærinn í Reykjavík" />
+      <div class="hero-image-caption">
+        Litla Brekka í Reykjavík. Bærinn var síðasti torfbærinn í borginni og stóð við Suðurgötu til 1981.
+        Hafði þá verið eini torfbærinn í Reykjavík í yfir 40 ár. En allnokkrir torfbæir stóðu fram á 20. öld. 
+      </div>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="cards">
+        <article class="card" id="allir-baerir">
+          <h2>Um torfbæina</h2>
+          <p>
+            Umfjöllun um torfbæi í Reykjavík og víðar, hvenær reistir, hvenær rifnir og staðsetningu þeirra. 
+            Ásamt ljósmyndum og nánari upplýsingum.
+          </p>
+        </article>
+
+        <article class="card" id="kort">
+          <h2>Kort</h2>
+          <p>
+            Skoða má staðsetningu torfbæjanna á kortum ásamt frekari upplýsingum ef smellt er
+            á einstaka bæi.
+          </p>
+        </article>
+
+        <article class="card" id="um-vefinn">
+          <h2>Um vefinn</h2>
+          <p>
+            Tilgangur vefsins er að safna saman upplýsingum um torfbæi í Reykjavík og annars staðar á 
+            landinu.  Sjá nánar.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Vefur um gamla torfbæi á Íslandi
+  </footer>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ánanaust | Torfbæir í Reykjavík</title>
+  <style>
+    :root {
+      --bg: #f5f1e8;
+      --paper: #fffdf8;
+      --earth: #6f5a46;
+      --earth-dark: #4b3a2b;
+      --grass: #657b4b;
+      --text: #2f2a24;
+      --muted: #6c645b;
+      --line: #d9cfbf;
+      --shadow: 0 12px 30px rgba(0,0,0,0.08);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(180deg, #efe7d8 0%, var(--bg) 100%);
+      color: var(--text);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,253,248,0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--earth-dark);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .menu {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: var(--earth-dark);
+      padding: 10px 16px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+      font-size: 0.98rem;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+      background: var(--earth);
+      color: white;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 70px;
+    }
+
+    .hero {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      color: var(--grass);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1.08;
+      color: var(--earth-dark);
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 900px;
+    }
+
+    .toolbar {
+      margin-top: 22px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .button-primary {
+      background: var(--earth);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: var(--earth-dark);
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: var(--earth-dark);
+      border-color: var(--line);
+    }
+
+    .button-secondary:hover {
+      background: #f1ebdf;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .card,
+    .image-item {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card-image img,
+    .image-grid img,
+    .single-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-text,
+    .caption {
+      padding: 22px 24px 26px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      text-align: center;
+      padding: 22px;
+      color: var(--muted);
+      background: rgba(255,253,248,0.7);
+      margin-top: 30px;
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .image-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page {
+        padding: 28px 16px 50px;
+      }
+
+      .hero {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a href="../index.html" class="brand">Torfbæir á Íslandi</a>
+      <div class="menu">
+        <a href="../RvkTomthus.html" class="active">Reykjavík</a>
+        <a href="../RvkBujardir.html">Höfuðborgarsvæðið</a>
+        <a href="../LandidBujardir.html">Landsbyggðin</a>
+        <a href="../Borgarkort.html">Kort</a>
+        <a href="../um-vefinn.html">Um vefinn</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Tómthúsbýli í vesturbæ Reykjavíkur</div>
+      <h1>Ánanaust</h1>
+      <p>
+        Ánanaust voru gömul býli vestast í Reykjavík, nátengd sjósókn og byggðinni við
+        fjöruborðið. Hér eru myndir, kort og texti um sögu bæjanna.
+      </p>
+
+      <div class="toolbar">
+        <a class="button button-primary"
+           href="../Ibuar/Manntal-Ananaust.pdf"
+           onclick="openPdfWindow(this.href); return false;">
+          Opna íbúaskrá
+        </a>
+
+        <a class="button button-secondary" href="../RvkTomthus.html">Til baka á yfirlit</a>
+      </div>
+    </section>
+
+    <section class="content-grid">
+
+      <article class="card">
+        <div class="image-grid">
+          <img src="../Myndir/Ananaust/Ananaust-1715.jpg" alt="Uppdráttur frá 1715 þar sem Ánanaust sjást" />
+          <img src="../Myndir/Ananaust/Ananaust-1801.jpg" alt="Teikning eða kort frá 1801 þar sem Ánanaust sjást" />
+        </div>
+        <div class="card-text">
+          Ánanaust var upphaflega naust frá Vík, Reykjavík, en síðar getið sem hjáleigu frá
+          Hlíðarhúsum í manntali 1703. Þegar kirkjan á Helgafelli fékk Hlíðarhús að gjöf árið
+          1723 fylgdi hjáleigan Ánanaust með. Bæjarstjórn Reykjavíkur keypti Hlíðarhús árið 1858.
+          Óljóst er hversu langt aftur má rekja byggð í Ánanaustum. Á 18. og 19. öld var oftast
+          þríbýlt í Ánanaustum og voru bæirnir fimm um tíma. Síðasti torfbærinn stóð fram til
+          1930, en síðasti bærinn sem tilheyrði Ánanaustum var rifinn árið 1940 vegna
+          gatnaframkvæmda. Gatan Ánanaust, sem varðveitir nafn bæjanna, fékk nafn sitt árið 1948.
+          Björn Jónsson skipstjóri bjó og gerði út frá Ánanaustum, en útræði var ávallt mikið þaðan
+          enda skilyrði góð til sjósóknar. Ánanaustabæirnir stóðu þar sem nú er vestasti hluti
+          Mýrargötu. Teikningin vinstra megin er uppdráttur eftir Hoffgard frá 1715 og þar má sjá
+          að þrír bæir tilheyra Ánanaustum. Teikningin hægra megin er frá 1801.
+        </div>
+      </article>
+
+      <section class="image-grid">
+        <article class="image-item">
+          <img src="../Myndir/Ananaust/Ananaust-Sel.ofl.-1850.jpg" alt="Kort frá um 1850 sem sýnir Ánanaust og nágrenni" />
+          <div class="caption">
+            Teikningin sýnir staðsetningu torfbæja vestast í vesturbænum. Ánanaust má sjá efst
+            hægra megin. Bærinn Sel, sem var kirkjujörð og þekkt frá um 1500, er þarna nefndur
+            Stóra-Sel til aðgreiningar frá Litla-Seli. Kortið er frá um 1850.
+          </div>
+        </article>
+
+        <article class="image-item">
+          <img src="../Myndir/Ananaust/Ananaust-1902.jpg" alt="Herforingjakort frá 1902 þar sem Ánanaustabæir sjást" />
+          <div class="caption">
+            Myndin er hluti af svonefndum herforingjakortum frá 1902, en Ánanaustabæina má sjá í
+            græna rammanum. Á þessum tíma var strandlengjan enn ósnortin og bæirnir hafa nánast
+            staðið við fjöruborðið. Mýrargata var ekki til á þessum tíma en liggur í dag milli
+            neðsta Ánanaustarbæjarins og þess í miðjunni í græna rammanum.
+          </div>
+        </article>
+      </section>
+
+      <article class="card">
+        <div class="single-image">
+          <img src="../Myndir/Ananaust/Ananaust-Ivarssel-Ljmynd.jpg" alt="Ljósmynd þar sem Ívarssel, stakkstæði og hluti Ánanaustabæjanna sjást" />
+        </div>
+        <div class="card-text">
+          Lengst til vinstri sést Ívarssel sem stendur enn í dag við Vesturgötu. Í baksýn má sjá
+          stakkstæði og hluta Ánanaustabæjanna. Einlyfta steinhúsið á miðri mynd nefndist
+          Ánanaust C en það byggðu bræðurnir Kristinn og Björn Jónssynir árið 1902 og bjuggu þar
+          með fjölskyldum sínum og foreldrum.
+        </div>
+      </article>
+
+      <section class="image-grid">
+        <article class="image-item">
+          <img src="../Myndir/Ananaust/Ananaust-Lj1917.jpg" alt="Ljósmynd frá 1917 af húsum við Ánanaust" />
+          <div class="caption">
+            Húsið vinstra megin nefndist Ánanaust A, sem Þorvaldur Guðmundsson skipstjóri byggði
+            árið 1903, en það var rifið 1915. Hægra megin, á miðri mynd, sést húsið Ólafsbakki.
+          </div>
+        </article>
+
+        <article class="image-item">
+          <img src="../Myndir/Ananaust/Ananaust-orfirisey.jpg" alt="Séð frá Ánanaustum út í Örfirisey" />
+          <div class="caption">
+            Séð frá Ánanaustum út í Örfirisey. Grandinn út í Örfirisey er þarna enn ósnortinn og
+            fór í kaf á flóði.
+          </div>
+        </article>
+      </section>
+
+      <section class="image-grid">
+        <article class="image-item">
+          <img src="../Myndir/Ananaust/AnanaustabaerMagnusar.jpg" alt="Síðasti torfbærinn í Ánanaustum" />
+          <div class="caption">
+            Ánanaustabæirnir voru þrír. Síðasti torfbærinn sem hér sést, nánast að hruni kominn,
+            var rifinn um 1930. Steinbæir með sömu nöfnum stóðu til 1940.
+          </div>
+        </article>
+
+        <article class="image-item">
+          <img src="../Myndir/Ananaust/Magnus-Ananaust-um1925.jpg" alt="Magnús Guðmundsson tómthúsmaður í Ánanaustum" />
+          <div class="caption">
+            Magnús Guðmundsson tómthúsmaður í Ánanaustum og mikill sjósóknari á sinni tíð. Hann
+            var síðasti ábúandinn í torfbænum vinstra megin. Magnús lést árið 1929.
+          </div>
+        </article>
+      </section>
+
+    </section>
+  </main>
+
+  <footer>
+    Torfbæir í Reykjavík — Björn Jónsson
+  </footer>
+
+  <script>
+    function openPdfWindow(url) {
+      window.open(
+        url,
+        'ibuarWindow',
+        'width=700,height=900,left=850,top=80,scrollbars=yes,resizable=yes'
+      );
+    }
+  </script>
+</body>
+</html>

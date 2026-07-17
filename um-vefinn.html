@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Um vefinn | Torfbæir á Íslandi</title>
+  <style>
+    :root {
+      --bg: #f5f1e8;
+      --paper: #fffdf8;
+      --earth: #6f5a46;
+      --earth-dark: #4b3a2b;
+      --grass: #657b4b;
+      --text: #2f2a24;
+      --muted: #6c645b;
+      --line: #d9cfbf;
+      --shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(180deg, #efe7d8 0%, var(--bg) 100%);
+      color: var(--text);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,253,248,0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: var(--earth-dark);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .menu {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: var(--earth-dark);
+      padding: 10px 16px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+      font-size: 0.98rem;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+      background: var(--earth);
+      color: white;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 56px 24px 70px;
+    }
+
+    .page-header {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      color: var(--grass);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    h1, h2 {
+      color: var(--earth-dark);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.08;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-size: 1.5rem;
+    }
+
+    p {
+      line-height: 1.8;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .fact {
+      background: #faf6ee;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .fact h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--earth-dark);
+      font-size: 1.08rem;
+    }
+
+    .fact p {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      text-align: center;
+      padding: 22px;
+      color: var(--muted);
+      background: rgba(255,253,248,0.7);
+    }
+
+    @media (max-width: 800px) {
+      .facts {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a href="index.html" class="brand">Torfbæir á Íslandi</a>
+      <div class="menu">
+        <a href="RvkTomthus.html" >Reykjavík</a>
+        <a href="RvkBujardir.html" >Höfuðborgarsvæðið</a>
+        <a href="LandidBujardir.html" >Landsbyggðin</a>
+        <a href="Borgarkort.html">Kort</a>
+        <a href="um-vefinn.html" class="active">Um vefinn</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="page-header">
+      <h1>Um vefinn</h1>
+      <p>
+        Þessi vefur er tileinkaður gömlum torfbæjum á Íslandi og sögu þeirra.
+        Markmiðið er að safna saman fróðleik, ljósmyndum og heimildum um torfbæina
+        sem mótaði íslenskt samfélag um aldir og er mikilvægur hluti af menningararfi landsins.
+        Áhersla er á torfbæi í Reykjavík og nágrenni.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Torfbæir á Íslandi</h2>
+      <p>
+        Torfbæir voru heimili langflestra Íslendinga um aldir. Þessi byggingarhefð á rætur að
+        rekja allt aftur til landnáms á 9. öld og þróaðist í samspili við loftslag, efnivið og
+        búsetuhætti landsins. Torf, grjót og timbur voru notuð saman, og húsin voru þannig löguð
+        að íslenskum aðstæðum, bæði kulda og vindi.
+      </p>
+      <p>
+        Víðast á Íslandi hafa torfbæir horfið, verið rifnir eða fallið úr notkun, en sums staðar hafa
+        þeir varðveist sem mikilvæg dæmi um eldri húsagerð og daglegt líf fyrri tíma.
+      </p>
+
+      <div class="facts">
+        <div class="fact">
+          <h3>Gömul byggingarhefð</h3>
+          <p>
+            Íslensk torfhúsabyggð er mjög gömul hefð sem tengist landnámi og hefur aðlagast
+            náttúru, samfélagi og takmörkuðum timburauðlindum landsins.
+          </p>
+        </div>
+
+        <div class="fact">
+          <h3>Byggt úr því sem var til</h3>
+          <p>
+            Þar sem timbur var af skornum skammti var torf og grjót lykilefniviður í veggi og þök,
+            en timbur notað í grindur og burðarhluta eftir því sem kostur var.
+          </p>
+        </div>
+
+        <div class="fact">
+          <h3>Hús sem féllu að landslagi</h3>
+          <p>
+            Torfbæir runnu oft vel inn í umhverfið og einangruðu vel. Þeir voru því bæði hagnýtir
+            og sérstakur hluti af íslensku menningarlandslagi. Torbæirnir höfðu þann kost að vera hlýir en 
+            voru almennt slæm hýbýli og í Reykjavík bjó þar efnaminna fólk.  Oft talað um kotin.
+          </p>
+        </div>
+
+        <div class="fact">
+          <h3>Varðveisla og minjagildi</h3>
+          <p>
+            Eftir því sem torfbæjum fækkaði jukust um leið rannsóknir, skráning og varðveisla þeirra.
+            Nokkrir staðir eru í dag mikilvæg dæmi um þessa arfleifð.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Um höfund vefsins</h2>
+      <p>
+        Höfundur vefsins er <strong>Björn Jónsson</strong>.
+      </p>
+      <p>
+        Tilgangur vefsins er að miðla fróðleik og vekja áhuga á gömlum torfbæjunum,
+        þessum veigamikla þætti í menningarsögu okkar sem nú er að mestu horfinn.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    Torfbæir á Íslandi
+  </footer>
+</body>
+</html>

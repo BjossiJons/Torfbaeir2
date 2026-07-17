@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efni í vinnslu | Torfbæir á Íslandi</title>
+
+  <style>
+    :root {
+      --bg: #f5f1e8;
+      --paper: #fffdf8;
+      --earth: #6f5a46;
+      --earth-dark: #4b3a2b;
+      --grass: #657b4b;
+      --text: #2f2a24;
+      --muted: #6c645b;
+      --line: #d9cfbf;
+      --shadow: 0 12px 30px rgba(0,0,0,0.08);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(180deg, #efe7d8 0%, var(--bg) 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,253,248,0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--earth-dark);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .menu {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: var(--earth-dark);
+      padding: 10px 16px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+      font-size: 0.98rem;
+    }
+
+    .menu a:hover {
+      background: var(--earth);
+      color: white;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 70px 24px;
+    }
+
+    .notice-card {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: 42px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .notice-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(101,123,75,0.16), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(111,90,70,0.14), transparent 32%);
+      pointer-events: none;
+    }
+
+    .notice-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      color: var(--grass);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      color: var(--earth-dark);
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1.08;
+    }
+
+    p {
+      max-width: 720px;
+      margin: 0 auto 18px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.07rem;
+    }
+
+    .actions {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--earth);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--earth-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--earth-dark);
+    }
+
+    .btn-secondary:hover {
+      background: #f1ebdf;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      text-align: center;
+      padding: 22px;
+      color: var(--muted);
+      background: rgba(255,253,248,0.7);
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .page {
+        padding: 40px 16px;
+      }
+
+      .notice-card {
+        padding: 30px 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a href="index.html" class="brand">Torfbæir á Íslandi</a>
+      <div class="menu">
+        <a href="RvkTomthus.html">Reykjavík</a>
+        <a href="RvkBujardir.html">Höfuðborgarsvæðið</a>
+        <a href="LandidBujardir.html">Landsbyggðin</a>
+        <a href="Borgarkort.html">Kort</a>
+        <a href="um-vefinn.html">Um vefinn</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="notice-card">
+      <div class="notice-content">
+        <div class="eyebrow">Efni í vinnslu</div>
+        <h1>Þessi síða er ekki tilbúin</h1>
+
+        <p>
+          Þessi hluti vefsins er í vinnslu og verður síðar hluti af vefsvæði
+          um gamla torfbæi á Íslandi.
+        </p>
+
+        <p>
+          Hér munu koma ljósmyndir, texti og frekari upplýsingar um viðkomandi bæ
+          þegar efnið hefur verið unnið.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="RvkBujardir.html">Til baka á yfirlit</a>
+          <a class="btn btn-secondary" href="index.html">Forsíða</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Torfbæir á Íslandi — Björn Jónsson
+  </footer>
+</body>
+</html>
