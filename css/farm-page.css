@@ -1,0 +1,165 @@
+```css
+/*
+  Sameiginlegt útlit fyrir síður um einstaka bæi.
+  Notað með:
+  <body class="farm-page">
+*/
+
+.farm-page .page {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 40px 24px 70px;
+}
+
+/* Yfirlitskassi efst á bæjarsíðu */
+
+.farm-page .hero {
+  max-width: none;
+  margin: 0 0 28px;
+  padding: 34px;
+  display: block;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow);
+}
+
+.farm-page .hero h1 {
+  margin-bottom: 12px;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  line-height: 1.08;
+}
+
+.farm-page .hero p {
+  max-width: 900px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+/* Hnappar fyrir íbúaskrá og til baka */
+
+.toolbar {
+  margin-top: 22px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Aðalefni */
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+
+/*
+  main.css notar .card einnig á forsíðu.
+  Á bæjarsíðum þarf kortið að vera án innra bils
+  svo myndin nái alveg út að brúnum.
+*/
+
+.farm-page .card,
+.farm-page .image-item {
+  padding: 0;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow);
+}
+
+/* Myndir */
+
+.card-image img,
+.single-image img,
+.image-grid img,
+.image-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-text,
+.caption {
+  padding: 22px 24px 26px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.card-text p,
+.caption p {
+  margin: 0;
+}
+
+.card-text p + p,
+.caption p + p {
+  margin-top: 1em;
+}
+
+/* Tvær myndir hlið við hlið */
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+/*
+  Þegar image-grid er inni í einu korti eiga myndirnar
+  að liggja saman án bils á milli.
+*/
+
+.card > .image-grid {
+  gap: 0;
+}
+
+/* Neðri spássía á footer bæjarsíðna */
+
+.farm-page footer {
+  margin-top: 30px;
+}
+
+/* Spjaldtölvur og símar */
+
+@media (max-width: 900px) {
+  .farm-page .page {
+    padding: 28px 16px 50px;
+  }
+
+  .farm-page .hero {
+    padding: 24px;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-text,
+  .caption {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .farm-page .page {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .farm-page .hero {
+    padding: 22px 20px;
+  }
+
+  .toolbar {
+    align-items: stretch;
+  }
+
+  .toolbar .button {
+    text-align: center;
+  }
+}
+```
