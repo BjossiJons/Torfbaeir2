@@ -32,7 +32,7 @@
   align-items: start;
 }
 
-.farm-page .hero-heading-row h1 {
+.farm-page .hero-text h1 {
   margin: 0;
   font-size: clamp(2rem, 4vw, 3.3rem);
   line-height: 1.08;
@@ -51,7 +51,7 @@
   white-space: nowrap;
 }
 
-.farm-page .farm-intro {
+.farm-page .hero-text .farm-intro {
   max-width: 900px;
   margin: 16px 0 0;
   color: var(--muted);

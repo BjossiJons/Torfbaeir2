@@ -33,18 +33,27 @@
         <div class="eyebrow">Bæir á Bráðræðisholti</div>
 
         <div class="hero-heading-row">
-          <h1>Bráðræði og bæir í nágrenninu</h1>
+          <div class="hero-text">
+            <h1>Bráðræði og bæir í nágrenninu</h1>
+
+            <p class="farm-intro">
+            Bráðræðisholtið var þéttbýlt svæði torfbæja og hjáleiga vestast í Reykjavík. Hér eru kort, ljósmyndir og frásagnir af bæjunum sem stóðu á holtinu og í næsta nágrenni.
+          </p>
+          </div>
 
           <div class="hero-actions">
           <a class="button button-secondary" href="../RvkTomthus.html">
             Til baka á yfirlit
           </a>
+          <a
+            class="button button-primary"
+            href="../Ibuar/Manntal-Bradraedi.pdf"
+            onclick="openPdfWindow(this.href); return false;"
+          >
+            Opna íbúaskrá
+          </a>
           </div>
         </div>
-
-        <p class="farm-intro">
-          Bráðræðisholtið var þéttbýlt svæði torfbæja og hjáleiga vestast í Reykjavík. Hér eru kort, ljósmyndir og frásagnir af bæjunum sem stóðu á holtinu og í næsta nágrenni.
-        </p>
       </section>
 
       <section class="content-grid" aria-label="Myndir og saga Bráðræði og bæir í nágrenninu">
@@ -143,5 +152,6 @@
     </main>
 
     <footer>Torfbæir í Reykjavík — Björn Jónsson</footer>
+    <script src="../js/pdf-popup.js"></script>
   </body>
 </html>

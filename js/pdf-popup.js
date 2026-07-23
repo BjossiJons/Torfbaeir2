@@ -1,4 +1,3 @@
-```javascript
 "use strict";
 
 /**
@@ -43,4 +42,3 @@ function openPdfWindow(url) {
     window.open(url, "_blank", "noopener");
   }
 }
-```

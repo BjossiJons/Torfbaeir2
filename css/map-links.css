@@ -1,0 +1,114 @@
+/* Kortasíða - hliðarvalmynd og innfellt kort */
+
+.map-links-page .page {
+  max-width: var(--wide-content-width);
+  margin: 0 auto;
+  padding: 34px 24px 50px;
+}
+
+.map-links-page .map-hero {
+  margin-bottom: 26px;
+  padding: 30px 32px;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow);
+}
+
+.map-links-page .map-hero h1 {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.08;
+}
+
+.map-links-page .map-hero p {
+  max-width: 950px;
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 1.03rem;
+  line-height: 1.7;
+}
+
+.map-links-page .map-hero p:last-child {
+  margin-bottom: 0;
+}
+
+.map-links-page .layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+}
+
+.map-links-page .sidebar {
+  padding: 20px;
+  background: var(--paper);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow);
+}
+
+.map-links-page .map-links a {
+  display: block;
+  margin-bottom: 8px;
+  padding: 10px;
+  background: var(--paper-soft);
+  border-radius: 12px;
+  color: var(--earth-dark);
+  text-decoration: none;
+}
+
+.map-links-page .map-links a.primary-map {
+  background: var(--earth);
+  color: white;
+  font-weight: 700;
+}
+
+.map-links-page .map-links a.active-map {
+  background: #e9decd;
+  outline: 2px solid var(--earth-dark);
+  font-weight: 700;
+}
+
+.map-links-page .map-links a.primary-map.active-map {
+  background: var(--earth-dark);
+  color: white;
+}
+
+.map-links-page .map-section-title {
+  margin-top: 30px;
+  margin-bottom: 16px;
+  padding-left: 4px;
+  color: var(--grass);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.map-links-page .map-links .secondary-map {
+  margin-left: 18px;
+}
+
+.map-links-page .viewer-card {
+  overflow: hidden;
+  background: white;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow);
+}
+
+.map-links-page .viewer-header {
+  padding: 14px;
+  background: var(--paper-soft);
+  border-bottom: 1px solid var(--line);
+}
+
+.map-links-page iframe {
+  width: 100%;
+  height: 800px;
+  border: none;
+}
+
+@media (max-width: 900px) {
+  .map-links-page .layout {
+    grid-template-columns: 1fr;
+  }
+}

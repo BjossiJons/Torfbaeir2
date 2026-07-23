@@ -1,262 +1,89 @@
 <!DOCTYPE html>
 <html lang="is">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bújarðir | Torfbæir á Íslandi</title>
-  <style>
-    :root {
-      --bg: #f5f1e8;
-      --paper: #fffdf8;
-      --earth: #6f5a46;
-      --earth-dark: #4b3a2b;
-      --grass: #657b4b;
-      --text: #2f2a24;
-      --muted: #6c645b;
-      --line: #d9cfbf;
-      --shadow: 0 12px 30px rgba(0,0,0,0.08);
-      --radius: 22px;
-    }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    * { box-sizing: border-box; }
+    <meta
+      name="description"
+      content="Yfirlit yfir eldri bújarðir og bæjarstæði á höfuðborgarsvæðinu."
+    />
+    <meta name="author" content="Björn Jónsson" />
 
-    body {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      background: linear-gradient(180deg, #efe7d8 0%, var(--bg) 100%);
-      color: var(--text);
-    }
+    <title>Bújarðir | Torfbæir á Íslandi</title>
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(255,253,248,0.94);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-    }
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/overview.css" />
+  </head>
 
-    .nav {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
+  <body class="overview-page">
+    <header class="topbar">
+      <nav class="nav" aria-label="Aðalvalmynd">
+        <a href="index.html" class="brand">Torfbæir á Íslandi</a>
 
-    .brand {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--earth-dark);
-      text-decoration: none;
-      white-space: nowrap;
-    }
+        <div class="menu">
+          <a href="RvkTomthus.html">Reykjavík</a>
+          <a
+            href="RvkBujardir.html"
+            class="active"
+            aria-current="page"
+          >
+            Höfuðborgarsvæðið
+          </a>
+          <a href="LandidBujardir.html">Landsbyggðin</a>
+          <a href="Borgarkort.html">Kort</a>
+          <a href="um-vefinn.html">Um vefinn</a>
+        </div>
+      </nav>
+    </header>
 
-    .menu {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    <main class="page">
+      <section class="overview-hero">
+        <div class="eyebrow">Bújarðir og bæjarstæði</div>
 
-    .menu a {
-      text-decoration: none;
-      color: var(--earth-dark);
-      padding: 10px 16px;
-      border-radius: 999px;
-      transition: 0.2s ease;
-      font-size: 0.98rem;
-    }
+        <h1>Torfbæir í nágrenni Reykjavíkur</h1>
 
-    .menu a:hover,
-    .menu a.active {
-      background: var(--earth);
-      color: white;
-    }
+        <p>
+          Hér er yfirlit yfir eldri bújarðir og bæjarstæði á höfuðborgarsvæðinu.
+          Smellið á bæjarheiti til að opna síðu með myndum, texta og frekari upplýsingum.
+        </p>
+      </section>
 
-    .page {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 34px 24px 50px;
-    }
+      <section class="selector-card" aria-labelledby="baerjarheiti">
+        <h2 id="baerjarheiti">Bæjarheiti</h2>
+        <p>Veldu bæ til að skoða nánar.</p>
 
-    .hero {
-      background: rgba(255,255,255,0.62);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 30px 32px;
-      box-shadow: var(--shadow);
-      margin-bottom: 26px;
-    }
+        <div class="baer-grid">
+          <a href="BlankPage.html">Árbær</a>
+          <a href="BlankPage.html">Ártún</a>
+          <a href="BlankPage.html">Breiðholt</a>
+          <a href="BlankPage.html">Bústaðir</a>
+          <a href="BlankPage.html">Eiði (Seltjarnarnes)</a>
+          <a href="BlankPage.html">Eiði (Grafarvogur)</a>
+          <a href="BlankPage.html">Elliðavatn</a>
+          <a href="BlankPage.html">Engey</a>
+          <a href="BlankPage.html">Fúlilækur</a>
+          <a href="BlankPage.html">Grafarkot</a>
+          <a href="BlankPage.html">Gröf</a>
+          <a href="BlankPage.html">Gufunes</a>
+          <a href="BlankPage.html">Nes</a>
+          <a href="BlankPage.html">Hólmur</a>
+          <a href="BlankPage.html">Keldnakot</a>
+          <a href="BlankPage.html">Keldur</a>
+          <a href="BlankPage.html">Korpúlfsstaðir</a>
+          <a href="BlankPage.html">Lambhagi</a>
+          <a href="BlankPage.html">Laugarnes</a>
+          <a href="BlankPage.html">Nauthóll</a>
+          <a href="BlankPage.html">Rauðará</a>
+          <a href="BlankPage.html">Reynisvatn</a>
+          <a href="BlankPage.html">Skildinganes</a>
+          <a href="BlankPage.html">Úlfarsá</a>
+          <a href="BlankPage.html">Viðey</a>
+          <a href="BlankPage.html">Örfirisey</a>
+        </div>
+      </section>
+    </main>
 
-    .eyebrow {
-      color: var(--grass);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.08;
-      color: var(--earth-dark);
-    }
-
-    .hero p {
-      margin: 0;
-      max-width: 950px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 1.03rem;
-    }
-
-    .selector-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 24px;
-    }
-
-    .selector-card h2 {
-      margin: 0 0 8px;
-      color: var(--earth-dark);
-      font-size: 1.5rem;
-    }
-
-    .selector-card p {
-      margin: 0 0 20px;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .baer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 14px;
-    }
-
-    .baer-grid a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 74px;
-      text-align: center;
-      text-decoration: none;
-      color: var(--earth-dark);
-      background: #faf6ee;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 14px 12px;
-      transition: 0.2s ease;
-      line-height: 1.35;
-      font-size: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    }
-
-    .baer-grid a:hover {
-      background: #efe7d8;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      text-align: center;
-      padding: 22px;
-      color: var(--muted);
-      background: rgba(255,253,248,0.7);
-      margin-top: 30px;
-    }
-
-    @media (max-width: 700px) {
-      .page {
-        padding: 22px 14px 40px;
-      }
-
-      .hero,
-      .selector-card {
-        padding: 22px 20px;
-      }
-
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .baer-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <header class="topbar">
-    <nav class="nav">
-      <a href="index.html" class="brand">Torfbæir á Íslandi</a>
-      <div class="menu">
-        <a href="RvkTomthus.html">Reykjavík</a>
-        <a href="RvkBujardir.html" class="active">Höfuðborgarsvæðið</a>
-        <a href="LandidBujardir.html">Landsbyggðin</a>
-        <a href="Borgarkort.html">Kort</a>
-        <a href="um-vefinn.html">Um vefinn</a>
-      </div>
-    </nav>
-  </header>
-
-  <main class="page">
-    <section class="hero">
-      <div class="eyebrow">Bújarðir og bæjarstæði</div>
-      <h1>Torfbæir í nágrenni Reykjavíkur</h1>
-      <p>
-        Hér er yfirlit yfir eldri bújarðir og bæjarstæði á höfuðborgarsvæðinu.
-        Smellið á bæjarheiti til að opna síðu með myndum, texta og frekari upplýsingum.
-      </p>
-    </section>
-
-    <section class="selector-card">
-      <h2>Bæjarheiti</h2>
-      <p>Veldu bæ til að skoða nánar.</p>
-
-      <div class="baer-grid">
-        <a href="BlankPage.html">Árbær</a>
-        <a href="BlankPage.html">Ártún</a>
-        <a href="BlankPage.html">Breiðholt</a>
-        <a href="BlankPage.html">Bústaðir</a>
-        <a href="BlankPage.html">Eiði (Seltjarnarnes)</a>
-        <a href="BlankPage.html">Eiði (Grafarvogur)</a>
-        <a href="BlankPage.html">Elliðavatn</a>
-        <a href="BlankPage.html">Engey</a>
-        <a href="BlankPage.html">Fúlilækur</a>
-        <a href="BlankPage.html">Grafarkot</a>
-        <a href="BlankPage.html">Gröf</a>
-        <a href="BlankPage.html">Gufunes</a>
-        <a href="BlankPage.html">Nes</a>
-        <a href="BlankPage.html">Hólmur</a>
-        <a href="BlankPage.html">Keldnakot</a>
-        <a href="BlankPage.html">Keldur</a>
-        <a href="BlankPage.html">Korpúlfsstaðir</a>
-        <a href="BlankPage.html">Lambhagi</a>
-        <a href="BlankPage.html">Laugarnes</a>
-        <a href="BlankPage.html">Nauthóll</a>
-        <a href="BlankPage.html">Rauðará</a>
-        <a href="BlankPage.html">Reynisvatn</a>
-        <a href="BlankPage.html">Skildinganes</a>
-        <a href="BlankPage.html">Úlfarsá</a>
-        <a href="BlankPage.html">Viðey</a>
-        <a href="BlankPage.html">Örfirisey</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    Torfbæir í Reykjavík — Björn Jónsson
-  </footer>
-</body>
+    <footer>Torfbæir í Reykjavík — Björn Jónsson</footer>
+  </body>
 </html>
