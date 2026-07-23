@@ -1,69 +1,74 @@
-```css
 /*
   Sameiginlegt útlit fyrir síður um einstaka bæi.
-  Notað með:
+  Notist með:
   <body class="farm-page">
 */
 
 .farm-page .page {
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 40px 24px 70px;
+  padding: 46px 24px 70px;
 }
 
-/* Yfirlitskassi efst á bæjarsíðu */
+/* Hauskassi bæjarsíðu */
 
-.farm-page .hero {
-  max-width: none;
-  margin: 0 0 28px;
-  padding: 34px;
-  display: block;
-  background: rgba(255, 255, 255, 0.6);
+.farm-page .farm-hero {
+  margin-bottom: 26px;
+  padding: 30px 32px;
+  background: rgba(255, 255, 255, 0.68);
   border: 1px solid var(--line);
   border-radius: var(--radius-large);
   box-shadow: var(--shadow);
 }
 
-.farm-page .hero h1 {
-  margin-bottom: 12px;
+.farm-page .farm-hero .eyebrow {
+  margin-bottom: 8px;
+}
+
+.farm-page .hero-heading-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: start;
+}
+
+.farm-page .hero-heading-row h1 {
+  margin: 0;
   font-size: clamp(2rem, 4vw, 3.3rem);
   line-height: 1.08;
 }
 
-.farm-page .hero p {
-  max-width: 900px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.75;
+.farm-page .hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  min-width: 190px;
 }
 
-/* Hnappar fyrir íbúaskrá og til baka */
+.farm-page .hero-actions .button {
+  text-align: center;
+  white-space: nowrap;
+}
 
-.toolbar {
-  margin-top: 22px;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+.farm-page .farm-intro {
+  max-width: 900px;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 /* Aðalefni */
 
-.content-grid {
+.farm-page .content-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 24px;
 }
 
-/*
-  main.css notar .card einnig á forsíðu.
-  Á bæjarsíðum þarf kortið að vera án innra bils
-  svo myndin nái alveg út að brúnum.
-*/
-
-.farm-page .card,
+.farm-page .content-card,
 .farm-page .image-item {
-  padding: 0;
   overflow: hidden;
   background: var(--paper);
   border: 1px solid var(--line);
@@ -71,76 +76,120 @@
   box-shadow: var(--shadow);
 }
 
-/* Myndir */
+/* Stór mynd með texta */
 
-.card-image img,
-.single-image img,
-.image-grid img,
-.image-item img {
+.farm-page .card-image,
+.farm-page .single-image {
+  padding: 14px 14px 0;
+}
+
+.farm-page .card-image img,
+.farm-page .single-image img,
+.farm-page .content-card > img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 14px;
 }
 
-.card-text,
-.caption {
-  padding: 22px 24px 26px;
+.farm-page .content-card > img {
+  width: calc(100% - 28px);
+  margin: 14px 14px 0;
+}
+
+.farm-page .card-text {
+  padding: 20px 24px 26px;
   color: var(--muted);
   font-size: 1rem;
-  line-height: 1.55;
+  line-height: 1.58;
 }
 
-.card-text p,
-.caption p {
+.farm-page .card-text p {
   margin: 0;
 }
 
-.card-text p + p,
-.caption p + p {
+.farm-page .card-text p + p {
   margin-top: 1em;
 }
 
 /* Tvær myndir hlið við hlið */
 
-.image-grid {
+.farm-page .image-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
 }
 
-/*
-  Þegar image-grid er inni í einu korti eiga myndirnar
-  að liggja saman án bils á milli.
-*/
-
-.card > .image-grid {
-  gap: 0;
+.farm-page .image-item {
+  display: flex;
+  flex-direction: column;
 }
 
-/* Neðri spássía á footer bæjarsíðna */
-
-.farm-page footer {
-  margin-top: 30px;
+.farm-page .image-item > img {
+  width: calc(100% - 28px);
+  height: auto;
+  margin: 14px 14px 0;
+  display: block;
+  border-radius: 14px;
 }
 
-/* Spjaldtölvur og símar */
+.farm-page .caption {
+  padding: 18px 22px 24px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* Myndapar inni í sama korti */
+
+.farm-page .content-card > .image-grid {
+  gap: 14px;
+  padding: 14px 14px 0;
+}
+
+.farm-page .content-card > .image-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+}
+
+/* Tilvitnanir */
+
+.farm-page blockquote {
+  margin: 18px 0 0;
+  padding: 16px 18px;
+  background: var(--paper-soft);
+  border-left: 4px solid var(--grass);
+  border-radius: 0 14px 14px 0;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.65;
+}
+
+/* Responsive */
 
 @media (max-width: 900px) {
   .farm-page .page {
-    padding: 28px 16px 50px;
+    padding: 32px 16px 50px;
   }
 
-  .farm-page .hero {
+  .farm-page .farm-hero {
     padding: 24px;
   }
 
-  .image-grid {
+  .farm-page .hero-heading-row {
     grid-template-columns: 1fr;
+    gap: 18px;
   }
 
-  .card-text,
-  .caption {
-    padding: 20px;
+  .farm-page .hero-actions {
+    min-width: 0;
+    max-width: 280px;
+  }
+
+  .farm-page .image-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -150,16 +199,26 @@
     padding-left: 14px;
   }
 
-  .farm-page .hero {
+  .farm-page .farm-hero {
     padding: 22px 20px;
   }
 
-  .toolbar {
-    align-items: stretch;
+  .farm-page .hero-actions {
+    max-width: none;
+    width: 100%;
   }
 
-  .toolbar .button {
-    text-align: center;
+  .farm-page .card-image,
+  .farm-page .single-image,
+  .farm-page .content-card > .image-grid {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .farm-page .content-card > img,
+  .farm-page .image-item > img {
+    width: calc(100% - 20px);
+    margin-right: 10px;
+    margin-left: 10px;
   }
 }
-```

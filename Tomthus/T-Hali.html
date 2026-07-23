@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="is">
   <head>
@@ -9,7 +8,6 @@
       name="description"
       content="Myndir og sögulegar upplýsingar um Hala eða Halakot í vesturbæ Reykjavíkur."
     />
-
     <meta name="author" content="Björn Jónsson" />
 
     <title>Hali og Halakot | Torfbæir í Reykjavík</title>
@@ -24,7 +22,9 @@
         <a href="../index.html" class="brand">Torfbæir á Íslandi</a>
 
         <div class="menu">
-          <a href="../RvkTomthus.html" class="active">Reykjavík</a>
+          <a href="../RvkTomthus.html" class="active" aria-current="page">
+            Reykjavík
+          </a>
           <a href="../RvkBujardir.html">Höfuðborgarsvæðið</a>
           <a href="../LandidBujardir.html">Landsbyggðin</a>
           <a href="../Borgarkort.html">Kort</a>
@@ -34,12 +34,21 @@
     </header>
 
     <main class="page">
-      <section class="hero">
+      <section class="farm-hero">
         <div class="eyebrow">Bæir í vesturbæ Reykjavíkur</div>
 
-        <h1>Hali og kot í nágrenni</h1>
+        <div class="hero-heading-row">
+          <h1>Hali og kot í nágrenni</h1>
 
-        <p>
+          <a
+            class="button button-secondary hero-back-button"
+            href="../RvkTomthus.html"
+          >
+            Til baka á yfirlit
+          </a>
+        </div>
+
+        <p class="farm-intro">
           Myndir og texti um Hala, torfbæ sem stóð við Bræðraborgarstíg, og aðra
           torfbæi á svipuðum slóðum.
         </p>
@@ -55,15 +64,11 @@
           >
             Opna íbúaskrá
           </a>
-
-          <a class="button button-secondary" href="../RvkTomthus.html">
-            Til baka á yfirlit
-          </a>
         </div>
       </section>
 
       <section class="content-grid" aria-label="Myndir og saga Hala">
-        <article class="card">
+        <article class="content-card">
           <div class="card-image">
             <img
               src="../Myndir/Hali/Rvk1787-HaliOflmerkt.jpg"
@@ -74,7 +79,7 @@
           <div class="card-text">
             <p>
               Kort af Reykjavík frá árinu 1787 sem sýnir alla bæi í vesturbænum.
-              Þar má meðal annars sjá Hala eða Halakot, eins og það var ýmist
+              Þar má meðal annars sjá Hala eða Halakot, eins og kotið var ýmist
               kallað. Getið er um bæinn í heimildum frá 1787 og Hali virðist
               hafa byggst snemma úr landi Hlíðarhúsa. Tvíbýli var þar á fyrri
               hluta 19. aldar.
@@ -82,9 +87,9 @@
 
             <p>
               Bærinn stóð þar sem nú eru gatnamót Ránargötu og
-              Bræðraborgarstígs, en staðsetningin er þó fremur ónákvæm. Árið
-              1882 var byggt timburhús sem nefndist Hali að Bræðraborgarstíg 4–6
-              og árið 1896 var byggður steinbær sem einnig nefndist Hali að
+              Bræðraborgarstígs, en staðsetningin þó fremur ónákvæm. Árið 1882
+              var byggt timburhús sem nefndist Hali að Bræðraborgarstíg 4–6 og
+              árið 1896 var byggður steinbær sem einnig var nefndur Hali að
               Bræðraborgarstíg 5.
             </p>
 
@@ -93,13 +98,13 @@
               heimildum segir að lóð Hala virðist hafa tekið yfir mikinn hluta
               svæðisins þar sem Bræðraborgarstígur og Ránargata mætast. Ellert
               Schram skipstjóri byggði hús um aldamótin sem enn stendur og telst
-              Bræðraborgarstígur 4. Árið 1934 var leyft að reisa steinhús á
-              lóðinni og ber það sama húsnúmer, 4a.
+              Bræðraborgarstígur 4. Árið 1934 var reist steinhús á lóðinni sem
+              ber sama húsnúmer, 4a.
             </p>
           </div>
         </article>
 
-        <article class="card">
+        <article class="content-card">
           <div class="card-image">
             <img
               src="../Myndir/Hali/Vesturbaer1801-teiknAage.jpg"
@@ -109,15 +114,14 @@
 
           <div class="card-text">
             <p>
-              Teikning af Reykjavík byggð á korti frá 1801. Athygli vekur að
-              Halakot er ekki merkt inn á myndina, en ætti að vera þar sem rauða
-              örin bendir. Í vesturbænum eru aðeins Hlíðarhús og Ánanaust sýnd.
+              Teikning af Reykjavík byggð á korti frá 1801. Halakot er ekki
+              merkt inn á myndina, en ætti að vera þar sem rauða örin bendir. Í
+              vesturbænum eru aðeins Hlíðarhús og Ánanaust sýnd.
             </p>
 
             <p>
-              Vafalaust er hér einfaldlega um ónákvæmni að ræða. Það taldist
-              eflaust lítil yfirsjón á þeim tíma þótt einn eða tveir tómthúsbæir
-              vantaði á kortið.
+              Vafalaust er hér einfaldlega um ónákvæmni að ræða. Taldist eflaust
+              lítil yfirsjón þótt einstaka tómthúsbæi vantaði á kortið.
             </p>
           </div>
         </article>
@@ -147,7 +151,7 @@
 
             <div class="caption">
               Útsýni úr vesturbænum yfir Örfirisey, Örfiriseyjargranda og
-              Grandabót. Ófært var út í Örfirisey um flóð áður en
+              Grandabót. Ófært var út í Örfirisey á flóði áður en
               hafnarframkvæmdir hófust árið 1913.
             </div>
           </article>
@@ -186,4 +190,3 @@
     <script src="../js/pdf-popup.js"></script>
   </body>
 </html>
-```
