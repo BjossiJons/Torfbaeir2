@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="is">
   <head>
     <meta charset="utf-8" />
@@ -28,67 +28,109 @@
       </nav>
     </header>
 
-    <main class="page">
-      <section class="farm-hero">
-        <div class="eyebrow">Hjáleiga frá Vík</div>
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="tag">Hjáleiga frá Vík</span>
+        <h1>Götuhús</h1>
 
-        <div class="hero-heading-row">
+        <div class="hero-row">
           <div class="hero-text">
-            <h1>Götuhús</h1>
-
             <p class="farm-intro">
-            Götuhús voru ein af hjáleigum Víkur í Reykjavík og stóðu á milli Landakots og Grjóta, þar sem nú eru Túngata 25 og 27. Hér eru myndir, kort og texti um sögu býlisins.
-          </p>
+              Götuhús voru ein af hjáleigum Víkur í Reykjavík og stóðu á
+              milli Landakots og Grjóta, þar sem nú eru Túngata 25 og 27. Hér
+              eru myndir, kort og texti um sögu býlisins.
+            </p>
           </div>
-
           <div class="hero-actions">
-          <a class="button button-secondary" href="../RvkTomthus.html">
-            Til baka á yfirlit
-          </a>
-          <a
-            class="button button-primary"
-            href="../Ibuar/Manntal-Gotuhus.pdf"
-            onclick="openPdfWindow(this.href); return false;"
-          >
-            Opna íbúaskrá
-          </a>
+            <a class="button-secondary" href="../RvkTomthus.html">Til baka á yfirlit</a>
+            <a
+              class="button-primary"
+              href="../Ibuar/Manntal-Gotuhus.pdf"
+              onclick="openPdfWindow(this.href); return false;"
+            >
+              Opna íbúaskrá
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+
+      <section class="photo-row">
+        <p class="photo-row-label">Kort af svæðinu</p>
+        <div class="photo-grid">
+          <div class="photo-mount">
+            <span class="corner tl"></span><span class="corner tr"></span>
+            <img src="../Myndir/Landakot/Rvk1703.jpg" alt="Staðsetning helstu bæja og býla í Reykjavík árið 1703" />
+            <p class="photo-caption">
+              Staðsetning helstu bæja og býla í Reykjavík og nágrenni.
+              <span class="photo-num">Kort · 1703</span>
+            </p>
+          </div>
+          <div class="photo-mount">
+            <span class="corner tl"></span><span class="corner tr"></span>
+            <img src="../Myndir/Gotuhus/Rvk1787-byli.jpg" alt="Kort af vesturhluta Reykjavíkur árið 1787" />
+            <p class="photo-caption">
+              Vesturhluti Reykjavíkur. Götuhús var ein af hjáleigum Víkur,
+              Reykjavíkur.
+              <span class="photo-num">Kort · 1787</span>
+            </p>
           </div>
         </div>
       </section>
 
-      <section class="content-grid" aria-label="Myndir og saga Götuhús">
-        <section class="image-grid">
-        <article class="image-item">
-        <img alt="Staðsetning helstu bæja og býla í Reykjavík árið 1703" src="../Myndir/Landakot/Rvk1703.jpg"/>
-        <div class="caption">
-                  Staðsetning helstu bæja og býla í Reykjavík og nágrenni árið 1703.
-                </div>
-        </article>
-        <article class="image-item">
-        <img alt="Kort af vesturhluta Reykjavíkur árið 1787" src="../Myndir/Gotuhus/Rvk1787-byli.jpg"/>
-        <div class="caption">
-                  Kort af vesturhluta Reykjavíkur árið 1787. Götuhús var ein af hjáleigum Víkur, Reykjavíkur.
-                </div>
-        </article>
-        </section>
-        <article class="content-card">
-        <img alt="Teikning Gaimards af Götuhúsum árið 1836" src="../Myndir/Gotuhus/Gotuhus-TeikningGaimards1836.jpg"/>
-        <div class="card-text"><p>Götuhús árið 1836 samkvæmt teikningu Gaimards. Götuhús voru nokkurn veginn mitt á milli
-                Landakots og Grjóta og stóðu þar sem nú eru Túngata 25 og 27. Ekki er vitað hvenær byggð hófst í Götuhúsum en samkvæmt manntali 1703 virðist hafa búið
-                þar ein fjölskylda. Við stofnun Innréttinganna um miðja 18. öld var ákveðið að leggja tún
-                Götuhúsa til þeirra. Lauk þá að mestu búskap en tómthúsbýli risu þess í stað. Þegar Innréttingarnar voru boðnar upp um 1800 keypti Westy Petræus, einn helsti kaupmaðurinn
-                í Reykjavík á þeim tíma, Götuhús sem og flestar aðrar eignir Innréttinganna. Götuhúsum
-                hnignaði mjög uns Geir Zoega stórkaupmaður eignaðist þau árið 1863. Hann hóf þegar miklar
-                jarðarbætur, lét rífa kotin og slétta yfir, enda voru þau þá flest í eyði eða að hruni komin
-                og naumast mannabústaðir. Nefndust túnin Geirstún eftir það, þangað til svæðið tók að
-                byggjast um eða eftir aldamótin 1900.</p></div>
-        </article>
-        <article class="content-card">
-        <img alt="Málverk Jóns Helgasonar af Götuhúsum" src="../Myndir/Gotuhus/Gotuhus-JH.jpg"/>
-        <div class="card-text"><p>Málverk Jóns Helgasonar biskups af Götuhúsum eins og hann telur að þau hafi litið út
-                um miðja 19. öld.</p></div>
-        </article>
-      </section>
+      <article class="entry">
+        <div>
+          <p class="entry-date">1703 – 1900</p>
+          <p>
+            Götuhús árið 1836 samkvæmt teikningu Gaimards. Götuhús voru
+            nokkurn veginn mitt á milli Landakots og Grjóta og stóðu þar sem
+            nú eru Túngata 25 og 27. Ekki er vitað hvenær byggð hófst í
+            Götuhúsum en samkvæmt manntali 1703 virðist hafa búið þar ein
+            fjölskylda.
+          </p>
+          <p>
+            Við stofnun Innréttinganna um miðja 18. öld var ákveðið að leggja
+            tún Götuhúsa til þeirra. Lauk þá að mestu búskap en tómthúsbýli
+            risu þess í stað. Þegar Innréttingarnar voru boðnar upp um 1800
+            keypti Westy Petræus, einn helsti kaupmaðurinn í Reykjavík á
+            þeim tíma, Götuhús sem og flestar aðrar eignir Innréttinganna.
+          </p>
+          <p>
+            Götuhúsum hnignaði mjög uns Geir Zoega stórkaupmaður eignaðist
+            þau árið 1863. Hann hóf þegar miklar jarðarbætur, lét rífa kotin
+            og slétta yfir, enda voru þau þá flest í eyði eða að hruni komin
+            og naumast mannabústaðir. Nefndust túnin Geirstún eftir það,
+            þangað til svæðið tók að byggjast um eða eftir aldamótin 1900.
+          </p>
+        </div>
+        <div class="plate">
+          <img src="../Myndir/Gotuhus/Gotuhus-TeikningGaimards1836.jpg" alt="Teikning Gaimards af Götuhúsum árið 1836" />
+          <div class="plate-caption">
+            <span>Teikning eftir Gaimard</span>
+            <span>1836</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="plate">
+          <img src="../Myndir/Gotuhus/Gotuhus-JH.jpg" alt="Málverk Jóns Helgasonar af Götuhúsum" />
+          <div class="plate-caption">
+            <span>Málverk eftir Jón Helgason</span>
+            <span>um 1850</span>
+          </div>
+        </div>
+        <div>
+          <p class="entry-date">um 1850</p>
+          <p>
+            Málverk Jóns Helgasonar biskups af Götuhúsum eins og hann telur
+            að þau hafi litið út um miðja 19. öld.
+          </p>
+        </div>
+      </article>
+
     </main>
 
     <footer>Torfbæir í Reykjavík — Björn Jónsson</footer>

@@ -1,30 +1,19 @@
-/* Kortasíða - hliðarvalmynd og innfellt kort */
-
 .map-links-page .page {
-  max-width: var(--wide-content-width);
+  max-width: var(--content-width);
   margin: 0 auto;
-  padding: 34px 24px 50px;
+  padding: 50px 28px 90px;
 }
 
 .map-links-page .map-hero {
-  margin-bottom: 26px;
-  padding: 30px 32px;
-  background: rgba(255, 255, 255, 0.62);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-large);
-  box-shadow: var(--shadow);
-}
-
-.map-links-page .map-hero h1 {
-  margin: 0 0 10px;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  line-height: 1.08;
+  margin-bottom: 34px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--stone-line);
 }
 
 .map-links-page .map-hero p {
   max-width: 950px;
   margin: 0 0 12px;
-  color: var(--muted);
+  color: var(--ink-soft);
   font-size: 1.03rem;
   line-height: 1.7;
 }
@@ -35,80 +24,76 @@
 
 .map-links-page .layout {
   display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 24px;
+  grid-template-columns: 260px 1fr;
+  gap: 30px;
 }
 
 .map-links-page .sidebar {
-  padding: 20px;
-  background: var(--paper);
-  border-radius: var(--radius-medium);
-  box-shadow: var(--shadow);
+  padding-right: 20px;
+  border-right: 1px solid var(--stone-line);
 }
 
 .map-links-page .map-links a {
   display: block;
-  margin-bottom: 8px;
-  padding: 10px;
-  background: var(--paper-soft);
-  border-radius: 12px;
-  color: var(--earth-dark);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--stone-line);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
   text-decoration: none;
 }
 
 .map-links-page .map-links a.primary-map {
-  background: var(--earth);
-  color: white;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--ink);
 }
 
 .map-links-page .map-links a.active-map {
-  background: #e9decd;
-  outline: 2px solid var(--earth-dark);
-  font-weight: 700;
-}
-
-.map-links-page .map-links a.primary-map.active-map {
-  background: var(--earth-dark);
-  color: white;
+  color: var(--rust);
 }
 
 .map-links-page .map-section-title {
-  margin-top: 30px;
-  margin-bottom: 16px;
-  padding-left: 4px;
-  color: var(--grass);
-  font-size: 0.85rem;
-  font-weight: 700;
+  margin-top: 26px;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-}
-
-.map-links-page .map-links .secondary-map {
-  margin-left: 18px;
+  color: var(--moss);
 }
 
 .map-links-page .viewer-card {
   overflow: hidden;
-  background: white;
-  border-radius: var(--radius-medium);
-  box-shadow: var(--shadow);
+  border: 1px solid var(--stone-line);
 }
 
 .map-links-page .viewer-header {
-  padding: 14px;
-  background: var(--paper-soft);
-  border-bottom: 1px solid var(--line);
+  padding: 12px 16px;
+  background: var(--paper-raised);
+  border-bottom: 1px solid var(--stone-line);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
 }
 
 .map-links-page iframe {
   width: 100%;
   height: 800px;
   border: none;
+  display: block;
 }
 
 @media (max-width: 900px) {
   .map-links-page .layout {
     grid-template-columns: 1fr;
+  }
+
+  .map-links-page .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--stone-line);
+    padding-right: 0;
+    padding-bottom: 20px;
   }
 }

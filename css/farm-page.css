@@ -1,224 +1,236 @@
-/*
-  Sameiginlegt útlit fyrir síður um einstaka bæi.
-  Notist með:
-  <body class="farm-page">
-*/
+.farm-page .hero {
+  background: var(--peat);
+  color: var(--paper);
+}
 
-.farm-page .page {
+.farm-page .hero-inner {
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 46px 24px 70px;
+  padding: 56px 28px 48px;
 }
 
-/* Hauskassi bæjarsíðu */
-
-.farm-page .farm-hero {
-  margin-bottom: 26px;
-  padding: 30px 32px;
-  background: rgba(255, 255, 255, 0.68);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-large);
-  box-shadow: var(--shadow);
+.farm-page .hero .tag {
+  color: var(--cream-ink-soft);
+  border: 1px solid var(--peat-line);
+  padding: 5px 10px;
 }
 
-.farm-page .farm-hero .eyebrow {
-  margin-bottom: 8px;
+.farm-page h1 {
+  color: var(--paper);
 }
 
-.farm-page .hero-heading-row {
+.farm-page .hero-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 28px;
-  align-items: start;
+  align-items: end;
+  gap: 40px;
 }
 
-.farm-page .hero-text h1 {
+.farm-page .hero-text .farm-intro {
+  max-width: 74ch;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--cream-ink);
   margin: 0;
-  font-size: clamp(2rem, 4vw, 3.3rem);
-  line-height: 1.08;
 }
 
 .farm-page .hero-actions {
   display: flex;
+  gap: 4px;
   flex-direction: column;
-  align-items: stretch;
-  gap: 10px;
-  min-width: 190px;
+  align-items: flex-end;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
 }
 
-.farm-page .hero-actions .button {
-  text-align: center;
+.farm-page .hero-actions a {
+  text-decoration: none;
+  color: var(--cream-ink);
+  border-bottom: 1px solid var(--peat-line);
+  padding-bottom: 2px;
   white-space: nowrap;
 }
 
-.farm-page .hero-text .farm-intro {
-  max-width: 900px;
-  margin: 16px 0 0;
-  color: var(--muted);
-  font-size: 1.05rem;
+.farm-page .hero-actions a.button-primary {
+  color: #f2c9a8;
+  border-bottom-color: var(--rust);
+}
+
+.farm-page .hero-actions a::after {
+  content: " \2192";
+}
+
+/* ---------- Efni ---------- */
+
+.farm-page main {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 56px 28px 90px;
+}
+
+.farm-page .entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 44px;
+  align-items: start;
+  padding: 44px 0;
+  border-top: 1px solid var(--stone-line);
+}
+
+.farm-page .entry:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.farm-page .entry-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--moss);
+  margin: 0 0 12px;
+}
+
+.farm-page .entry p {
+  font-size: 1.03rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+
+.farm-page .entry p:last-child {
+  margin-bottom: 0;
+}
+
+.farm-page .entry blockquote {
+  margin: 20px 0 0;
+  padding: 4px 0 4px 20px;
+  border-left: 2px solid var(--rust);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
   line-height: 1.7;
 }
 
-/* Aðalefni */
-
-.farm-page .content-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 24px;
-}
-
-.farm-page .content-card,
-.farm-page .image-item {
-  overflow: hidden;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-medium);
-  box-shadow: var(--shadow);
-}
-
-/* Stór mynd með texta */
-
-.farm-page .card-image,
-.farm-page .single-image {
+.farm-page .plate {
+  background: var(--paper-raised);
+  border: 1px solid var(--stone-line);
   padding: 14px 14px 0;
 }
 
-.farm-page .card-image img,
-.farm-page .single-image img,
-.farm-page .content-card > img {
+.farm-page .plate img {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
-  border-radius: 14px;
 }
 
-.farm-page .content-card > img {
-  width: calc(100% - 28px);
-  margin: 14px 14px 0;
-}
-
-.farm-page .card-text {
-  padding: 20px 24px 26px;
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.58;
-}
-
-.farm-page .card-text p {
-  margin: 0;
-}
-
-.farm-page .card-text p + p {
-  margin-top: 1em;
-}
-
-/* Tvær myndir hlið við hlið */
-
-.farm-page .image-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.farm-page .image-item {
+.farm-page .plate-pair {
   display: flex;
   flex-direction: column;
+  gap: 3px;
 }
 
-.farm-page .image-item > img {
-  width: calc(100% - 28px);
-  height: auto;
-  margin: 14px 14px 0;
-  display: block;
-  border-radius: 14px;
-}
-
-.farm-page .caption {
-  padding: 18px 22px 24px;
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.55;
-}
-
-/* Myndapar inni í sama korti */
-
-.farm-page .content-card > .image-grid {
-  gap: 14px;
-  padding: 14px 14px 0;
-}
-
-.farm-page .content-card > .image-grid img {
+.farm-page .plate-pair img {
   width: 100%;
   height: auto;
+}
+
+.farm-page .plate-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 2px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--stone);
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Ljósmyndaraðir ---------- */
+
+.farm-page .photo-row {
+  padding: 44px 0;
+  border-top: 1px solid var(--stone-line);
+}
+
+.farm-page .photo-row-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--moss);
+  margin: 0 0 24px;
+}
+
+.farm-page .photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  align-items: start;
+}
+
+.farm-page .photo-mount {
+  position: relative;
+  background: var(--paper-raised);
+  border: 1px solid var(--stone-line);
+  padding: 16px;
+}
+
+.farm-page .photo-mount img {
   display: block;
-  border-radius: 14px;
+  width: 100%;
+  height: auto;
 }
 
-/* Tilvitnanir */
+.farm-page .corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--stone);
+}
 
-.farm-page blockquote {
-  margin: 18px 0 0;
-  padding: 16px 18px;
-  background: var(--paper-soft);
-  border-left: 4px solid var(--grass);
-  border-radius: 0 14px 14px 0;
-  color: var(--muted);
+.farm-page .corner.tl {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.farm-page .corner.tr {
+  top: 10px;
+  right: 10px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.farm-page .photo-caption {
+  margin-top: 14px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
   font-style: italic;
-  line-height: 1.65;
 }
 
-/* Responsive */
+.farm-page .photo-num {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--rust);
+  font-style: normal;
+}
 
-@media (max-width: 900px) {
-  .farm-page .page {
-    padding: 32px 16px 50px;
-  }
-
-  .farm-page .farm-hero {
-    padding: 24px;
-  }
-
-  .farm-page .hero-heading-row {
+@media (max-width: 820px) {
+  .farm-page .entry,
+  .farm-page .photo-grid {
     grid-template-columns: 1fr;
-    gap: 18px;
+  }
+
+  .farm-page .hero-row {
+    align-items: flex-start;
   }
 
   .farm-page .hero-actions {
-    min-width: 0;
-    max-width: 280px;
-  }
-
-  .farm-page .image-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 600px) {
-  .farm-page .page {
-    padding-right: 14px;
-    padding-left: 14px;
-  }
-
-  .farm-page .farm-hero {
-    padding: 22px 20px;
-  }
-
-  .farm-page .hero-actions {
-    max-width: none;
-    width: 100%;
-  }
-
-  .farm-page .card-image,
-  .farm-page .single-image,
-  .farm-page .content-card > .image-grid {
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-
-  .farm-page .content-card > img,
-  .farm-page .image-item > img {
-    width: calc(100% - 20px);
-    margin-right: 10px;
-    margin-left: 10px;
+    align-items: flex-start;
   }
 }

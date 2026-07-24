@@ -1,100 +1,107 @@
-/* Yfirlitssíður */
+.overview-page .hero {
+  background: var(--peat);
+  color: var(--paper);
+}
 
-.overview-page .page {
-  max-width: var(--wide-content-width);
+.overview-page .hero-inner {
+  max-width: var(--content-width);
   margin: 0 auto;
-  padding: 34px 24px 50px;
+  padding: 52px 28px 44px;
 }
 
-.overview-page .overview-hero {
-  margin-bottom: 26px;
-  padding: 30px 32px;
-  background: rgba(255, 255, 255, 0.68);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-large);
-  box-shadow: var(--shadow);
+.overview-page .hero .tag {
+  color: var(--cream-ink-soft);
+  border: 1px solid var(--peat-line);
+  padding: 5px 10px;
 }
 
-.overview-page .overview-hero h1 {
-  margin-bottom: 10px;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  line-height: 1.08;
+.overview-page .hero h1 {
+  color: var(--paper);
 }
 
-.overview-page .overview-hero p {
-  max-width: 900px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 1.03rem;
+.overview-page .hero-inner p {
+  max-width: 62ch;
+  font-size: 1.05rem;
   line-height: 1.7;
+  color: var(--cream-ink);
+  margin: 0;
 }
 
-.overview-page .selector-card {
-  margin-bottom: 24px;
-  padding: 24px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-medium);
-  box-shadow: var(--shadow);
+.overview-page main {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 50px 28px 90px;
 }
 
-.overview-page .selector-card h2 {
-  margin: 0 0 8px;
-  font-size: 1.5rem;
-}
-
-.overview-page .selector-card > p {
-  margin: 0 0 20px;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-.overview-page .baer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 14px;
-}
-
-.overview-page .baer-grid a {
-  min-height: 74px;
-  padding: 14px 12px;
+.overview-page .toolbar {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--paper-soft);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  color: var(--earth-dark);
-  font-size: 1rem;
-  line-height: 1.35;
-  text-align: center;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  padding-bottom: 14px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--stone-line);
+  font-family: var(--font-mono);
+}
+
+.overview-page .toolbar .label {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--moss);
+}
+
+.overview-page .toolbar .count {
+  font-size: 0.78rem;
+  color: var(--stone);
+}
+
+.overview-page .alphabet {
+  columns: 3;
+  column-gap: 44px;
+}
+
+.overview-page .letter-group {
+  break-inside: avoid;
+  margin-bottom: 30px;
+}
+
+.overview-page .letter-mark {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--rust);
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--stone-line);
+}
+
+.overview-page .letter-group a {
+  display: block;
   text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.05rem;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--stone-line);
 }
 
-.overview-page .baer-grid a:hover {
-  background: var(--earth-light);
-  border-color: var(--line-strong);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+.overview-page .letter-group a:last-child {
+  border-bottom: none;
 }
 
-@media (max-width: 700px) {
-  .overview-page .page {
-    padding: 22px 14px 40px;
-  }
+.overview-page .letter-group a.pending {
+  color: var(--stone);
+}
 
-  .overview-page .overview-hero,
-  .overview-page .selector-card {
-    padding: 22px 20px;
+@media (max-width: 900px) {
+  .overview-page .alphabet {
+    columns: 2;
   }
+}
 
-  .overview-page .baer-grid {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+@media (max-width: 560px) {
+  .overview-page .alphabet {
+    columns: 1;
   }
 }
