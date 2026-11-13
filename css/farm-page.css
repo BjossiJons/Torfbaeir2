@@ -123,17 +123,6 @@
   height: auto;
 }
 
-.farm-page .plate-pair {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.farm-page .plate-pair img {
-  width: 100%;
-  height: auto;
-}
-
 .farm-page .plate-caption {
   display: flex;
   justify-content: space-between;
@@ -218,6 +207,38 @@
   letter-spacing: 0.04em;
   color: var(--rust);
   font-style: normal;
+}
+
+/* ---------- Tvær myndir hlið við hlið, texti undir ---------- */
+
+.farm-page .pair-block {
+  padding: 44px 0;
+  border-top: 1px solid var(--stone-line);
+}
+
+.farm-page .pair-block:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.farm-page .pair-block .plate-caption {
+  padding: 12px 2px 0;
+}
+
+.farm-page .pair-text {
+  max-width: 82ch;
+  margin-top: 26px;
+}
+
+.farm-page .pair-text p {
+  font-size: 1.03rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+
+.farm-page .pair-text p:last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 820px) {
