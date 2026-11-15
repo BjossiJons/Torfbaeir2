@@ -4,9 +4,15 @@
 
 | Hvað | Hvar |
 |---|---|
-| Listi yfir alla bæi (ein færsla á bæ) | `data/baeir.json` |
+| Listi yfir alla bæi (ein færsla á bæ) | `data/baeir.js` |
 | Myndir hvers bæjar | `Myndir/Baeir/<id>/` – t.d. `Myndir/Baeir/keldur/keldur-1.jpg` |
+| Kortið sjálft | `LandidBujardir.html` (+ `css/landsbyggd.css`, `js/landsbyggd.js`) |
 | Athugun á gögnunum | `tools/athuga-gogn.py` |
+
+Gagnaskráin er `.js` skrá (ekki `.json`) til þess að kortið virki líka þegar þú opnar
+`LandidBujardir.html` með tvísmelli á tölvunni þinni. Vafrar leyfa ekki að lesa `.json` skrár þannig.
+Innihaldið er eins og áður: listi af færslum. Ekki breyta fyrstu línunum (sem byrja á `//` og `window.`)
+eða síðustu línunni (`]);`).
 
 ## Að bæta við bæ
 
@@ -23,23 +29,26 @@ Sendu mér möppuna og ég minnka myndirnar í lotu.
 (t.d. `65.6038, -19.5087`). Þá afritast hnitin. Fyrri talan er `lat`, sú seinni `lng`.
 Tugabrot eru skrifuð með punkti (65.6038), ekki kommu.
 
-**4. Bættu færslu við `data/baeir.json`.** Afritaðu sniðmátið hér að neðan, límdu það á undan lokasviganum `]`
-og fylltu út. Komma á að vera á milli færslna, en **ekki** á eftir þeirri síðustu.
+**4. Bættu færslu við `data/baeir.js`.** Afritaðu sniðmátið hér að neðan, límdu það á undan síðustu línunni `]);`
+og fylltu út. Komma á að vera á milli færslna (og á milli mynda), en **ekki** á eftir þeirri síðustu.
+
+**5. Opnaðu `LandidBujardir.html` með tvísmelli** og athugaðu að bærinn birtist.
 
 ## Sniðmát
 
-```json
+```js
   {
     "id": "",
     "nafn": "",
     "landshluti": "",
+    "svaedi": "",
     "lat": 0,
     "lng": 0,
     "lysing": "",
     "myndir": [
       { "src": "", "texti": "" }
     ]
-  }
+  },
 ```
 
 Fleiri myndir: bættu við línu `{ "src": "...", "texti": "..." }` með kommu á milli.
@@ -48,12 +57,13 @@ Fleiri myndir: bættu við línu `{ "src": "...", "texti": "..." }` með kommu �
 
 | Reitur | Skylda | Lýsing |
 |---|---|---|
-| `id` | já | Auðkenni, sjá að ofan. Þarf að vera einstakt og er notað í slóð bæjarins og myndamöppunni. |
+| `id` | já | Auðkenni, sjá að ofan. Einstakt. Notað í slóð bæjarins (`LandidBujardir.html#keldur`) og myndamöppunni. |
 | `nafn` | já | Nafn bæjarins eins og það á að birtast. |
-| `landshluti` | já | Nákvæmlega eitt af gildunum hér að neðan. |
+| `landshluti` | já | Nákvæmlega eitt af gildunum hér að neðan. Notað í síunni á kortinu. |
+| `svaedi` | nei | Sveit, sýsla eða dalur, t.d. `"Mývatnssveit"`. Birtist undir nafninu og er hægt að leita að. |
 | `lat`, `lng` | já | Hnit (tölur, án gæsalappa). |
 | `lysing` | nei | Stuttur texti um bæinn sjálfan. Má sleppa. |
-| `sida` | nei | Slóð á ítarlegri síðu, t.d. `"Tomthus/T-Hali.html"`. Þá birtist hlekkur í kortaspjaldinu. |
+| `sida` | nei | Slóð á ítarlegri síðu, t.d. `"Tomthus/T-Hali.html"`. Þá birtist hlekkurinn „Lesa meira“ í spjaldinu. |
 | `myndir` | já | Listi af myndum. Má vera tómur `[]` meðan myndir vantar. |
 | `src` | já | Skráarnafn myndar, t.d. `"keldur-1.jpg"`. Mappan ræðst af `id`. |
 | `texti` | já | Texti við myndina. Má vera tómur `""`. |
@@ -63,17 +73,26 @@ Fleiri myndir: bættu við línu `{ "src": "...", "texti": "..." }` með kommu �
 
 Höfuðborgarsvæðið · Suðurnes · Vesturland · Vestfirðir · Norðurland vestra · Norðurland eystra · Austurland · Suðurland
 
+`landshluti` er grófa skiptingin (átta gildi, notuð í síunni). Nákvæmari staðsetning, eins og sveit eða dalur, fer í `svaedi`.
+
 ## Algeng mistök
 
-- **Komma vantar** milli færslna, eða **aukakomma** á eftir síðustu færslu. VS Code undirstrikar slíkt með rauðu.
+- **Komma vantar** milli færslna eða mynda, eða **aukakomma** á eftir síðustu færslu eða síðustu mynd. VS Code undirstrikar slíkt með rauðu.
 - **Gæsalappir (`"`) inni í texta** brjóta skrána. Notaðu „svona“ gæsalappir í textanum.
 - **Hástafir eða íslenskir stafir í skráarnöfnum.** Vefurinn greinir á milli `Keldur-1.jpg` og `keldur-1.jpg`.
+- **Skráarending sem passar ekki:** `laufas-1.png` er ekki `laufas-1.jpg`.
 - **Víxluð hnit.** `lat` á að vera um 63–67 og `lng` um -25 til -13.
 
 ## Athugun áður en þetta fer á vefinn
 
 Úr verkefnismöppunni (þarf Python): `python tools/athuga-gogn.py`
-Hún bendir á villur (t.d. kommur, myndir sem vantar, hástafi, hnit utan Íslands) og á myndir sem eru of stórar.
+Hún bendir á villur (kommur, myndir sem vantar, hástafi, hnit utan Íslands) og á myndir sem eru of stórar eða ónotaðar.
 Annars máttu bara láta Claude athuga skrána.
 
-Ráð í VS Code: `Shift+Alt+F` lagar inndrátt og sýnir strax ef sniðið er rangt.
+Ráð í VS Code: `Shift+Alt+F` lagar inndrátt.
+
+## Þegar bæirnir verða mjög margir
+
+Skráin ræður við mörghundruð bæi (400 bæir hlaðast á innan við sekúndu). Ef hún verður óþægileg í meðförum
+má skipta henni eftir landshlutum í t.d. `data/baeir-sudurland.js`, `data/baeir-austurland.js` o.s.frv.
+Hver skrá hefur sömu umbúðir. Þá þarf aðeins að bæta `<script src="data/baeir-....js"></script>` í `LandidBujardir.html`.
