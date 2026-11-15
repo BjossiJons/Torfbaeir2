@@ -95,6 +95,15 @@
   margin-bottom: 0;
 }
 
+.farm-page .entry-list {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0 0 0 18px;
+  font-size: 1.03rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+
 .farm-page .entry blockquote {
   margin: 20px 0 0;
   padding: 4px 0 4px 20px;
