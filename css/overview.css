@@ -9,12 +9,6 @@
   padding: 52px 28px 44px;
 }
 
-.overview-page .hero .tag {
-  color: var(--cream-ink-soft);
-  border: 1px solid var(--peat-line);
-  padding: 5px 10px;
-}
-
 .overview-page .hero h1 {
   color: var(--paper);
 }
@@ -52,7 +46,7 @@
 
 .overview-page .toolbar .count {
   font-size: 0.78rem;
-  color: var(--stone);
+  color: var(--stone-text);
 }
 
 .overview-page .alphabet {
@@ -91,7 +85,7 @@
 }
 
 .overview-page .letter-group a.pending {
-  color: var(--stone);
+  color: var(--stone-text);
 }
 
 @media (max-width: 900px) {

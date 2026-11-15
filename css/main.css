@@ -8,6 +8,8 @@
   --stone: #a89f8c;
   --stone-line: #cbc3af;
   --moss: #45543a;
+  --ink-muted: #5a5345;
+  --stone-text: #6b6354;
   --peat: #2a2118;
   --peat-line: #5a4f3d;
   --rust: #9c4f2e;
@@ -54,7 +56,7 @@ a {
 .nav {
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 20px 28px;
+  padding: 24px 28px;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -63,7 +65,7 @@ a {
 }
 
 .brand {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ink);
@@ -73,33 +75,34 @@ a {
 
 .menu {
   display: flex;
-  gap: 22px;
+  gap: 30px;
   flex-wrap: wrap;
 }
 
 .menu a {
   text-decoration: none;
-  color: var(--stone);
-  font-size: 0.82rem;
-  letter-spacing: 0.03em;
-  padding-bottom: 4px;
-  border-bottom: 1px solid transparent;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
 }
 
 .menu a:hover {
   color: var(--ink);
+  border-bottom-color: var(--stone-line);
 }
 
 .menu a.active,
 .menu a[aria-current="page"] {
   color: var(--ink);
+  font-weight: 500;
   border-bottom-color: var(--rust);
 }
 
 /* ---------- Fyrirsagnir og eyebrow ---------- */
 
-.eyebrow,
-.tag {
+.eyebrow {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -173,7 +176,7 @@ footer {
   margin-top: 30px;
   padding: 26px 28px;
   border-top: 1px solid var(--stone-line);
-  color: var(--stone);
+  color: var(--stone-text);
   text-align: center;
   font-family: var(--font-mono);
   font-size: 0.78rem;
