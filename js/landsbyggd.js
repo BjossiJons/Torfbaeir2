@@ -10,12 +10,6 @@
   "use strict";
 
   var CONFIG = {
-    // Kortaflísar frá CARTO (byggðar á OpenStreetMap-gögnum). Þær krefjast hvorki lykils né „Referer“-hauss,
-    // svo kortið virkar líka þegar síðan er opnuð með tvísmelli á tölvunni.
-    // Ath.: tile.openstreetmap.org er EKKI notað því það lokar á síður sem eru opnaðar beint úr skrá (403).
-    // Ef skipt er um kortaveitu þarf líka að breyta heimildalínunni (.map-credit) í LandidBujardir.html.
-    tileUrl: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-    tileOptions: { subdomains: "abcd", maxZoom: 18 },
     imageRoot: "Myndir/Baeir/",
     center: [64.95, -18.6],
     zoom: 6,
@@ -23,6 +17,35 @@
     focusZoom: 10,
     maxSuggestions: 8
   };
+  /*
+    Kortaveitur. Kortið velur sjálfgefna veitu eftir því hvernig síðan er opnuð:
+      - birt á vefnum (http/https): OpenStreetMap (opinber flísaþjónn, ætlaður fyrir minni vefi)
+      - opnuð með tvísmelli úr skrá (file://): Esri, því OpenStreetMap lokar á beiðnir án „Referer“-hauss (403)
+    Hægt er að velja aðra veitu í stikunni eða með ?kort=osm, ?kort=esri eða ?kort=topo aftan við slóðina.
+    Ath.: CARTO er ekki notað lengur því það krefst nú API-lykils.
+    Heimildartextinn er skrifaður í upprunalegri mynd því leyfisskilmálar krefjast hans.
+  */
+  var PROVIDERS = {
+    osm: {
+      name: "OpenStreetMap",
+      url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+      options: { maxZoom: 19 },
+      credit: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-þátttakendur'
+    },
+    esri: {
+      name: "Götukort (Esri)",
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+      options: { maxZoom: 19 },
+      credit: "Tiles © Esri — Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012"
+    },
+    topo: {
+      name: "Landslag (OpenTopoMap)",
+      url: "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+      options: { subdomains: "abc", maxNativeZoom: 17, maxZoom: 18 },
+      credit: 'Gögn: © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-þátttakendur, SRTM | Kort: © <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)'
+    }
+  };
+  var DEFAULT_PROVIDER = location.protocol === "file:" ? "esri" : "osm";
   var LANDSHLUTAR = [
     "Höfuðborgarsvæðið", "Suðurnes", "Vesturland", "Vestfirðir",
     "Norðurland vestra", "Norðurland eystra", "Austurland", "Suðurland"
@@ -97,7 +120,8 @@
   /* ---------- síður og kort ---------- */
 
   var mapEl = $("map"), stageEl = $("stage"), panel = $("panel");
-  var searchEl = $("search"), resultsEl = $("search-results"), regionEl = $("region"), countEl = $("count");
+  var searchEl = $("search"), resultsEl = $("search-results"), regionEl = $("region"), countEl = $("count"),
+      basemapEl = $("basemap"), creditEl = $("credit");
 
   if (typeof L === "undefined") {
     mapEl.appendChild(el("p", { class: "map-message", text: "Ekki tókst að hlaða kortasafninu. Athugaðu skrárnar í js/vendor/." }));
@@ -113,8 +137,22 @@
     zoomControl: false, attributionControl: false
   });
   L.control.zoom({ zoomInTitle: "Þysja inn", zoomOutTitle: "Þysja út" }).addTo(map);
-  L.tileLayer(CONFIG.tileUrl, CONFIG.tileOptions).addTo(map);
   map.setView(CONFIG.center, CONFIG.zoom);
+
+  var baseLayer = null;
+  function setBasemap(key) {
+    var p = PROVIDERS[key] || PROVIDERS[DEFAULT_PROVIDER];
+    if (baseLayer) { map.removeLayer(baseLayer); }
+    baseLayer = L.tileLayer(p.url, Object.assign({ maxZoom: 18 }, p.options)).addTo(map);
+    creditEl.innerHTML = "Kort: " + p.credit; // fastir strengir úr þessari skrá, aldrei gögn frá notanda
+    basemapEl.value = PROVIDERS[key] ? key : DEFAULT_PROVIDER;
+  }
+  Object.keys(PROVIDERS).forEach(function (k) {
+    basemapEl.appendChild(el("option", { value: k, text: PROVIDERS[k].name }));
+  });
+  basemapEl.addEventListener("change", function () { setBasemap(basemapEl.value); });
+  var wanted = new URLSearchParams(location.search).get("kort");
+  setBasemap(PROVIDERS[wanted] ? wanted : DEFAULT_PROVIDER);
 
   function pinIcon(active) {
     return L.divIcon({

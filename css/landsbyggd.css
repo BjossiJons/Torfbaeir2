@@ -81,6 +81,10 @@
   flex: 0 1 240px;
 }
 
+.landsbyggd-page .basemap {
+  flex: 0 1 230px;
+}
+
 .landsbyggd-page .map-count {
   margin: 0 0 0 auto;
   font-family: var(--font-mono);
@@ -613,7 +617,8 @@ body.lightbox-open {
   }
 
   .landsbyggd-page .search,
-  .landsbyggd-page .region {
+  .landsbyggd-page .region,
+  .landsbyggd-page .basemap {
     flex: 1 1 100%;
     max-width: none;
   }

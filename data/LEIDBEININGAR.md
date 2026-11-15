@@ -91,11 +91,16 @@ Annars máttu bara láta Claude athuga skrána.
 
 Ráð í VS Code: `Shift+Alt+F` lagar inndrátt.
 
-## Kortaveitan
+## Kortaveitan og forskoðun
 
-Kortaflísarnar koma frá CARTO (byggt á OpenStreetMap). Vistfang þeirra er í `CONFIG` efst í `js/landsbyggd.js`.
-Ekki nota `tile.openstreetmap.org`: hann lokar á síður sem eru opnaðar með tvísmelli á tölvunni og sýnir „403 Access blocked“.
-Ef skipt er um kortaveitu þarf líka að uppfæra heimildalínuna undir kortinu í `LandidBujardir.html`.
+Kortið getur notað þrjár kortaveitur (sjá `PROVIDERS` efst í `js/landsbyggd.js`) og það er val í stikunni fyrir ofan kortið: OpenStreetMap, Götukort (Esri) og Landslag (OpenTopoMap).
+
+- **Á vefnum** (síðan birt) er OpenStreetMap sjálfgefið.
+- **Þegar þú opnar `LandidBujardir.html` með tvísmelli á tölvunni** er Esri sjálfgefið, því OpenStreetMap lokar á síður sem opnaðar eru beint úr skrá og sýnir þá „403 Access blocked“.
+- Þú getur líka valið veitu með því að bæta `?kort=osm`, `?kort=esri` eða `?kort=topo` aftan við slóðina.
+- CARTO virkar ekki lengur án API-lykils.
+
+Öruggasta forskoðunin er að opna síðuna í gegnum **Live Server** í VS Code (viðbót: „Live Server“; hægri-smelltu á `LandidBujardir.html` og veldu „Open with Live Server“). Þá hegðar síðan sér eins og á vefnum og OpenStreetMap virkar.
 
 ## Þegar bæirnir verða mjög margir
 

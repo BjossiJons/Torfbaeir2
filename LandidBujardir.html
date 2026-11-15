@@ -66,6 +66,11 @@
           <select id="region"></select>
         </div>
 
+        <div class="basemap">
+          <label class="sr-only" for="basemap">Kortagerð</label>
+          <select id="basemap"></select>
+        </div>
+
         <p id="count" class="map-count" aria-live="polite"></p>
       </div>
 
@@ -74,10 +79,7 @@
         <aside id="panel" class="farm-panel" aria-labelledby="panel-title" aria-hidden="true"></aside>
       </div>
 
-      <p class="map-credit">
-        Kort: © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-þátttakendur
-        © <a href="https://carto.com/attributions">CARTO</a>
-      </p>
+      <p id="credit" class="map-credit"></p>
 
       <noscript>
         <p class="map-message">Kortið þarf JavaScript til að virka.</p>
