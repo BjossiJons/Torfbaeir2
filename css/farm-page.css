@@ -212,6 +212,22 @@
   font-style: normal;
 }
 
+/* ---------- Þrjár myndir í röð ---------- */
+
+.farm-page .photo-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.farm-page .photo-grid-3 .photo-mount {
+  padding: 12px;
+}
+
+.farm-page .photo-grid-3 .photo-caption {
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
 /* ---------- Tvær myndir hlið við hlið, texti undir ---------- */
 
 .farm-page .pair-block {
