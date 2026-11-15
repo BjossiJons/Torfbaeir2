@@ -91,6 +91,12 @@ Annars máttu bara láta Claude athuga skrána.
 
 Ráð í VS Code: `Shift+Alt+F` lagar inndrátt.
 
+## Kortaveitan
+
+Kortaflísarnar koma frá CARTO (byggt á OpenStreetMap). Vistfang þeirra er í `CONFIG` efst í `js/landsbyggd.js`.
+Ekki nota `tile.openstreetmap.org`: hann lokar á síður sem eru opnaðar með tvísmelli á tölvunni og sýnir „403 Access blocked“.
+Ef skipt er um kortaveitu þarf líka að uppfæra heimildalínuna undir kortinu í `LandidBujardir.html`.
+
 ## Þegar bæirnir verða mjög margir
 
 Skráin ræður við mörghundruð bæi (400 bæir hlaðast á innan við sekúndu). Ef hún verður óþægileg í meðförum

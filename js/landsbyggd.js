@@ -10,7 +10,12 @@
   "use strict";
 
   var CONFIG = {
-    tileUrl: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    // Kortaflísar frá CARTO (byggðar á OpenStreetMap-gögnum). Þær krefjast hvorki lykils né „Referer“-hauss,
+    // svo kortið virkar líka þegar síðan er opnuð með tvísmelli á tölvunni.
+    // Ath.: tile.openstreetmap.org er EKKI notað því það lokar á síður sem eru opnaðar beint úr skrá (403).
+    // Ef skipt er um kortaveitu þarf líka að breyta heimildalínunni (.map-credit) í LandidBujardir.html.
+    tileUrl: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+    tileOptions: { subdomains: "abcd", maxZoom: 18 },
     imageRoot: "Myndir/Baeir/",
     center: [64.95, -18.6],
     zoom: 6,
@@ -108,7 +113,7 @@
     zoomControl: false, attributionControl: false
   });
   L.control.zoom({ zoomInTitle: "Þysja inn", zoomOutTitle: "Þysja út" }).addTo(map);
-  L.tileLayer(CONFIG.tileUrl, { maxZoom: 18 }).addTo(map);
+  L.tileLayer(CONFIG.tileUrl, CONFIG.tileOptions).addTo(map);
   map.setView(CONFIG.center, CONFIG.zoom);
 
   function pinIcon(active) {
