@@ -77,10 +77,6 @@
   color: var(--stone-text);
 }
 
-.landsbyggd-page .region {
-  flex: 0 1 240px;
-}
-
 .landsbyggd-page .basemap {
   flex: 0 1 230px;
 }
@@ -617,7 +613,6 @@ body.lightbox-open {
   }
 
   .landsbyggd-page .search,
-  .landsbyggd-page .region,
   .landsbyggd-page .basemap {
     flex: 1 1 100%;
     max-width: none;

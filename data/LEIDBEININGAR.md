@@ -11,7 +11,7 @@
 
 Gagnaskráin er `.js` skrá (ekki `.json`) til þess að kortið virki líka þegar þú opnar
 `LandidBujardir.html` með tvísmelli á tölvunni þinni. Vafrar leyfa ekki að lesa `.json` skrár þannig.
-Innihaldið er eins og áður: listi af færslum. Ekki breyta fyrstu línunum (sem byrja á `//` og `window.`)
+Innihaldið er listi af færslum. Ekki breyta fyrstu línunum (sem byrja á `//` og `window.`)
 eða síðustu línunni (`]);`).
 
 ## Að bæta við bæ
@@ -40,8 +40,7 @@ og fylltu út. Komma á að vera á milli færslna (og á milli mynda), en **ekk
   {
     "id": "",
     "nafn": "",
-    "landshluti": "",
-    "svaedi": "",
+    "stadsetning": "",
     "lat": 0,
     "lng": 0,
     "lysing": "",
@@ -59,8 +58,7 @@ Fleiri myndir: bættu við línu `{ "src": "...", "texti": "..." }` með kommu �
 |---|---|---|
 | `id` | já | Auðkenni, sjá að ofan. Einstakt. Notað í slóð bæjarins (`LandidBujardir.html#keldur`) og myndamöppunni. |
 | `nafn` | já | Nafn bæjarins eins og það á að birtast. |
-| `landshluti` | já | Nákvæmlega eitt af gildunum hér að neðan. Notað í síunni á kortinu. |
-| `svaedi` | nei | Sveit, sýsla eða dalur, t.d. `"Mývatnssveit"`. Birtist undir nafninu og er hægt að leita að. |
+| `stadsetning` | nei | Frjáls texti um staðsetningu, t.d. `"Austurdalur í Skagafirði"` eða `"Mývatnssveit"`. Birtist undir nafninu og er hægt að leita að. Skrifaðu hvað sem hentar. |
 | `lat`, `lng` | já | Hnit (tölur, án gæsalappa). |
 | `lysing` | nei | Stuttur texti um bæinn sjálfan. Má sleppa. |
 | `sida` | nei | Slóð á ítarlegri síðu, t.d. `"Tomthus/T-Hali.html"`. Þá birtist hlekkurinn „Lesa meira“ í spjaldinu. |
@@ -69,11 +67,9 @@ Fleiri myndir: bættu við línu `{ "src": "...", "texti": "..." }` með kommu �
 | `texti` | já | Texti við myndina. Má vera tómur `""`. |
 | `heimild` | nei | Ljósmyndari eða uppruni myndar, t.d. `"Ljósmynd: Jón Jónsson"`. |
 
-## Landshlutar (skrifaðir nákvæmlega svona)
-
-Höfuðborgarsvæðið · Suðurnes · Vesturland · Vestfirðir · Norðurland vestra · Norðurland eystra · Austurland · Suðurland
-
-`landshluti` er grófa skiptingin (átta gildi, notuð í síunni). Nákvæmari staðsetning, eins og sveit eða dalur, fer í `svaedi`.
+Reiturinn `landshluti` er ekki notaður á kortinu í bili. Athugunarforritið tekur við honum ef hann er í færslu
+(leyfileg gildi: Höfuðborgarsvæðið, Suðurnes, Vesturland, Vestfirðir, Norðurland vestra, Norðurland eystra, Austurland, Suðurland),
+en hann þarf ekki að vera með.
 
 ## Algeng mistök
 
@@ -91,19 +87,16 @@ Annars máttu bara láta Claude athuga skrána.
 
 Ráð í VS Code: `Shift+Alt+F` lagar inndrátt.
 
-## Kortaveitan og forskoðun
+## Kortagerð
 
-Kortið getur notað þrjár kortaveitur (sjá `PROVIDERS` efst í `js/landsbyggd.js`) og það er val í stikunni fyrir ofan kortið: OpenStreetMap, Götukort (Esri) og Landslag (OpenTopoMap).
+Í stikunni fyrir ofan kortið er val á milli **Götukorts** (Esri) og **Landslags** (OpenTopoMap). Heimildalínan undir kortinu breytist með valinu.
+Götukort er sjálfgefið. Hægt er að opna kortið með `?kort=esri` eða `?kort=topo` aftan við slóðina.
+Kortaveiturnar eru skilgreindar í `PROVIDERS` efst í `js/landsbyggd.js`.
 
-- **Á vefnum** (síðan birt) er OpenStreetMap sjálfgefið.
-- **Þegar þú opnar `LandidBujardir.html` með tvísmelli á tölvunni** er Esri sjálfgefið, því OpenStreetMap lokar á síður sem opnaðar eru beint úr skrá og sýnir þá „403 Access blocked“.
-- Þú getur líka valið veitu með því að bæta `?kort=osm`, `?kort=esri` eða `?kort=topo` aftan við slóðina.
-- CARTO virkar ekki lengur án API-lykils.
-
-Öruggasta forskoðunin er að opna síðuna í gegnum **Live Server** í VS Code (viðbót: „Live Server“; hægri-smelltu á `LandidBujardir.html` og veldu „Open with Live Server“). Þá hegðar síðan sér eins og á vefnum og OpenStreetMap virkar.
+Ekki nota `tile.openstreetmap.org` (hann lokar á síður sem eru opnaðar með tvísmelli og sýnir „403 Access blocked“) né CARTO (krefst API-lykils).
 
 ## Þegar bæirnir verða mjög margir
 
 Skráin ræður við mörghundruð bæi (400 bæir hlaðast á innan við sekúndu). Ef hún verður óþægileg í meðförum
-má skipta henni eftir landshlutum í t.d. `data/baeir-sudurland.js`, `data/baeir-austurland.js` o.s.frv.
+má skipta henni í fleiri skrár, t.d. `data/baeir-sudurland.js`, `data/baeir-austurland.js` o.s.frv.
 Hver skrá hefur sömu umbúðir. Þá þarf aðeins að bæta `<script src="data/baeir-....js"></script>` í `LandidBujardir.html`.

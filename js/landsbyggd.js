@@ -18,38 +18,27 @@
     maxSuggestions: 8
   };
   /*
-    Kortaveitur. Kortið velur sjálfgefna veitu eftir því hvernig síðan er opnuð:
-      - birt á vefnum (http/https): OpenStreetMap (opinber flísaþjónn, ætlaður fyrir minni vefi)
-      - opnuð með tvísmelli úr skrá (file://): Esri, því OpenStreetMap lokar á beiðnir án „Referer“-hauss (403)
-    Hægt er að velja aðra veitu í stikunni eða með ?kort=osm, ?kort=esri eða ?kort=topo aftan við slóðina.
-    Ath.: CARTO er ekki notað lengur því það krefst nú API-lykils.
+    Kortaveitur: Götukort (Esri) og Landslag (OpenTopoMap). Valið í stikunni breytir um kortagerð.
+    Hægt er að opna kortið með ?kort=esri eða ?kort=topo aftan við slóðina.
+    OpenStreetMap-flísar (tile.openstreetmap.org) eru ekki notaðar: þær loka á síður sem eru opnaðar með tvísmelli (403).
+    CARTO er ekki notað því það krefst API-lykils.
     Heimildartextinn er skrifaður í upprunalegri mynd því leyfisskilmálar krefjast hans.
   */
   var PROVIDERS = {
-    osm: {
-      name: "OpenStreetMap",
-      url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-      options: { maxZoom: 19 },
-      credit: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-þátttakendur'
-    },
     esri: {
-      name: "Götukort (Esri)",
+      name: "Götukort",
       url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
       options: { maxZoom: 19 },
       credit: "Tiles © Esri — Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012"
     },
     topo: {
-      name: "Landslag (OpenTopoMap)",
+      name: "Landslag",
       url: "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
       options: { subdomains: "abc", maxNativeZoom: 17, maxZoom: 18 },
       credit: 'Gögn: © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-þátttakendur, SRTM | Kort: © <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)'
     }
   };
-  var DEFAULT_PROVIDER = location.protocol === "file:" ? "esri" : "osm";
-  var LANDSHLUTAR = [
-    "Höfuðborgarsvæðið", "Suðurnes", "Vesturland", "Vestfirðir",
-    "Norðurland vestra", "Norðurland eystra", "Austurland", "Suðurland"
-  ];
+  var DEFAULT_PROVIDER = "esri";
 
   var reduceMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   var narrow = window.matchMedia("(max-width: 820px)");
@@ -97,7 +86,7 @@
     if (byId[f.id]) { console.warn("Auðkennið „" + f.id + "“ er notað tvisvar – seinni færslu sleppt"); return; }
     var item = {
       id: f.id, nafn: f.nafn, lat: f.lat, lng: f.lng,
-      landshluti: f.landshluti || "", svaedi: f.svaedi || "", lysing: f.lysing || "", sida: f.sida || "",
+      stadsetning: f.stadsetning || "", lysing: f.lysing || "", sida: f.sida || "",
       myndir: []
     };
     (Array.isArray(f.myndir) ? f.myndir : []).forEach(function (m) {
@@ -108,19 +97,19 @@
         heimild: m.heimild || ""
       });
     });
-    item.leit = fold([item.nafn, item.svaedi, item.landshluti].join(" "));
+    item.leit = fold([item.nafn, item.stadsetning].join(" "));
     farms.push(item);
     byId[item.id] = item;
   });
   var collator = new Intl.Collator("is");
   farms.sort(function (a, b) { return collator.compare(a.nafn, b.nafn); });
 
-  function placeOf(f) { return [f.svaedi, f.landshluti].filter(Boolean).join(" · "); }
+  function placeOf(f) { return f.stadsetning; }
 
   /* ---------- síður og kort ---------- */
 
   var mapEl = $("map"), stageEl = $("stage"), panel = $("panel");
-  var searchEl = $("search"), resultsEl = $("search-results"), regionEl = $("region"), countEl = $("count"),
+  var searchEl = $("search"), resultsEl = $("search-results"), countEl = $("count"),
       basemapEl = $("basemap"), creditEl = $("credit");
 
   if (typeof L === "undefined") {
@@ -164,6 +153,7 @@
 
   var cluster = L.markerClusterGroup({
     showCoverageOnHover: false,
+    animate: false, // hreyfimyndir þyrpinga rekast á við flug kortsins að bæ og geta skilið merki eftir óbirt
     maxClusterRadius: 44,
     spiderfyOnMaxZoom: true,
     iconCreateFunction: function (c) {
@@ -184,44 +174,15 @@
     });
   });
 
-  var state = { region: "", current: null };
+  var state = { current: null };
 
-  function visibleFarms() {
-    return farms.filter(function (f) { return !state.region || f.landshluti === state.region; });
-  }
-
-  function applyFilter() {
-    var list = visibleFarms();
-    cluster.clearLayers();
-    cluster.addLayers(list.map(function (f) { return f.marker; }));
-    countEl.textContent = countText(list.length);
-  }
+  cluster.addLayers(farms.map(function (f) { return f.marker; }));
+  countEl.textContent = countText(farms.length);
 
   function fitAll() {
-    var list = visibleFarms();
-    if (!list.length) { map.setView(CONFIG.center, CONFIG.zoom); return; }
-    map.fitBounds(L.latLngBounds(list.map(function (f) { return [f.lat, f.lng]; })), { padding: [60, 60], maxZoom: 9 });
+    if (!farms.length) { map.setView(CONFIG.center, CONFIG.zoom); return; }
+    map.fitBounds(L.latLngBounds(farms.map(function (f) { return [f.lat, f.lng]; })), { padding: [60, 60], maxZoom: 9, animate: false });
   }
-
-  /* ---------- landshlutasía ---------- */
-
-  (function buildRegionFilter() {
-    var counts = {};
-    farms.forEach(function (f) { if (f.landshluti) { counts[f.landshluti] = (counts[f.landshluti] || 0) + 1; } });
-    regionEl.appendChild(el("option", { value: "", text: "Allir landshlutar" }));
-    var names = LANDSHLUTAR.filter(function (r) { return counts[r]; })
-      .concat(Object.keys(counts).filter(function (r) { return LANDSHLUTAR.indexOf(r) < 0; }));
-    names.forEach(function (r) {
-      regionEl.appendChild(el("option", { value: r, text: r + " (" + counts[r] + ")" }));
-    });
-    regionEl.addEventListener("change", function () {
-      state.region = regionEl.value;
-      if (state.current && state.region && state.current.landshluti !== state.region) { closeFarm(); }
-      applyFilter();
-      fitAll();
-      runSearch();
-    });
-  })();
 
   /* ---------- leit ---------- */
 
@@ -233,7 +194,7 @@
     matches = [];
     activeIdx = -1;
     if (q) {
-      matches = visibleFarms()
+      matches = farms
         .filter(function (f) { return f.leit.indexOf(q) !== -1; })
         .sort(function (a, b) {
           var ap = fold(a.nafn).indexOf(q) === 0 ? 0 : 1, bp = fold(b.nafn).indexOf(q) === 0 ? 0 : 1;
@@ -304,9 +265,6 @@
   function openFarm(id) {
     var f = byId[id];
     if (!f) { return; }
-    if (state.region && f.landshluti !== state.region) {
-      state.region = ""; regionEl.value = ""; applyFilter();
-    }
     if (state.current && state.current.marker) { state.current.marker.setIcon(pinIcon(false)); }
     state.current = f;
     f.marker.setIcon(pinIcon(true));
@@ -519,7 +477,6 @@
 
   /* ---------- ræsing ---------- */
 
-  applyFilter();
   fitAll();
   openFromHash();
 })();

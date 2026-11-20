@@ -25,8 +25,9 @@ LANDSHLUTAR = [
     "Höfuðborgarsvæðið", "Suðurnes", "Vesturland", "Vestfirðir",
     "Norðurland vestra", "Norðurland eystra", "Austurland", "Suðurland",
 ]
-FARM_KEYS = {"id", "nafn", "landshluti", "svaedi", "lat", "lng", "lysing", "sida", "myndir"}
-FARM_REQUIRED = ["id", "nafn", "landshluti", "lat", "lng", "myndir"]
+# „landshluti“ er valfrjáls og ekki notaður á kortinu í bili; „stadsetning“ er frjáls texti.
+FARM_KEYS = {"id", "nafn", "stadsetning", "landshluti", "lat", "lng", "lysing", "sida", "myndir"}
+FARM_REQUIRED = ["id", "nafn", "lat", "lng", "myndir"]
 IMG_KEYS = {"src", "texti", "heimild"}
 ID_RX = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 SRC_RX = re.compile(r"^[a-z0-9][a-z0-9._-]*\.(jpg|jpeg|png|webp)$")
@@ -110,7 +111,9 @@ def check_farm(i, farm, seen_ids):
         if k not in farm:
             err(f"{where}: vantar reitinn „{k}“")
     for k in farm:
-        if k not in FARM_KEYS:
+        if k == "svaedi":
+            warn(f"{where}: reiturinn „svaedi“ heitir nú „stadsetning“ – verður hunsaður þar til nafninu er breytt")
+        elif k not in FARM_KEYS:
             warn(f"{where}: óþekktur reitur „{k}“ (ritvilla?) – verður hunsaður")
 
     fid = farm.get("id")
@@ -129,8 +132,8 @@ def check_farm(i, farm, seen_ids):
     elif "nafn" in farm:
         err(f"{where}: „nafn“ á að vera texti")
 
-    if "svaedi" in farm and not isinstance(farm["svaedi"], str):
-        err(f"{where}: „svaedi“ á að vera texti")
+    if "stadsetning" in farm and not isinstance(farm["stadsetning"], str):
+        err(f"{where}: „stadsetning“ á að vera texti")
 
     lh = farm.get("landshluti")
     if lh is not None and lh not in LANDSHLUTAR:
